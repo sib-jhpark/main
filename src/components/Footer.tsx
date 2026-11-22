@@ -21,10 +21,10 @@ export function Footer() {
         {/* Right: Single-Line Quick Links & Controls (matching SOGS footer) */}
         <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-5">
           <nav aria-label="Footer" className="flex items-center gap-4 sm:gap-5">
-            {NAV_ITEMS.slice(0, 4).map((item) => (
+            {NAV_ITEMS.map((item) => (
               <a
                 key={item.id}
-                href={`#${item.id}`}
+                href={item.href}
                 className="hover:text-[#1D1D1F] dark:hover:text-[#F5F5F7] transition-colors"
               >
                 {pick(item.label)}
