@@ -127,7 +127,7 @@ export const profileData: ProfileData = {
           en: 'Industrial-grade verification: real-time performance & physical constraint checks in sim',
         },
       ],
-      githubUrl: 'https://github.com/sib-proejct/mapf-rl-fe',
+      githubUrl: 'https://github.com/sib-jhpark/mapf-rl-fe',
     },
     {
       id: 'search-only-good-stock',
@@ -175,7 +175,7 @@ export const profileData: ProfileData = {
           en: 'Constructed personal Direct Indexing ETF from value-screened equities',
         },
       ],
-      githubUrl: 'https://github.com/sib-proejct/search-only-good-stock-fe',
+      githubUrl: 'https://github.com/sib-jhpark/search-only-good-stock-fe',
     },
     {
       id: 'humanoid-two-state-mbrl',
@@ -579,20 +579,20 @@ export const profileData: ProfileData = {
       {
         id: 'github',
         label: { ko: 'GitHub', en: 'GitHub' },
-        handle: '@sib-proejct',
-        url: 'https://github.com/sib-proejct',
+        handle: '@sib-jhpark',
+        url: 'https://github.com/sib-jhpark',
       },
       // {
       //   id: 'blog',
       //   label: { ko: 'MAPF-RL Repo', en: 'MAPF-RL Repo' },
       //   handle: 'mapf-rl-fe',
-      //   url: 'https://github.com/sib-proejct/mapf-rl-fe',
+      //   url: 'https://github.com/sib-jhpark/mapf-rl-fe',
       // },
       // {
       //   id: 'resume',
       //   label: { ko: 'SOGS Repo', en: 'SOGS Repo' },
       //   handle: 'search-only-good-stock-fe',
-      //   url: 'https://github.com/sib-proejct/search-only-good-stock-fe',
+      //   url: 'https://github.com/sib-jhpark/search-only-good-stock-fe',
       // },
       {
         id: 'linkedin',

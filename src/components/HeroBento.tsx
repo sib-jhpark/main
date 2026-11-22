@@ -8,8 +8,24 @@ export function HeroBento() {
 
   return (
     <div id="about" className="scroll-mt-20 pt-8 sm:pt-12 space-y-12 sm:space-y-14">
-      {/* 1. Top Identity Block (대표소개 — text left, portrait right) */}
-      <section className="flex flex-col-reverse sm:flex-row items-start sm:items-center justify-between gap-6 sm:gap-10 pb-8 border-b border-black/[0.06] dark:border-white/[0.08]">
+      {/* 1. Top Identity Block (대표소개 — portrait left, text right) */}
+      <section className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-9 pb-8 border-b border-black/[0.06] dark:border-white/[0.08]">
+        {profileData.photoUrl && (
+          <div
+            onContextMenu={(e) => e.preventDefault()}
+            style={{ WebkitTouchCallout: 'none' }}
+            className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-3xl overflow-hidden border border-black/[0.06] dark:border-white/[0.08] shadow-apple-card shrink-0 select-none"
+          >
+            <img
+              src={profileData.photoUrl}
+              alt={pick(profileData.name)}
+              draggable={false}
+              className="w-full h-full object-cover pointer-events-none select-none"
+            />
+            <div aria-hidden="true" className="absolute inset-0" />
+          </div>
+        )}
+
         <div className="space-y-3 min-w-0">
           <div className="space-y-1">
             <h1 className="text-[30px] sm:text-[36px] font-bold tracking-[-0.025em] text-[#1D1D1F] dark:text-[#F5F5F7] leading-tight">
@@ -67,22 +83,6 @@ export function HeroBento() {
             })}
           </div>
         </div>
-
-        {profileData.photoUrl && (
-          <div
-            onContextMenu={(e) => e.preventDefault()}
-            style={{ WebkitTouchCallout: 'none' }}
-            className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-3xl overflow-hidden border border-black/[0.06] dark:border-white/[0.08] shadow-apple-card shrink-0 select-none"
-          >
-            <img
-              src={profileData.photoUrl}
-              alt={pick(profileData.name)}
-              draggable={false}
-              className="w-full h-full object-cover pointer-events-none select-none"
-            />
-            <div aria-hidden="true" className="absolute inset-0" />
-          </div>
-        )}
       </section>
 
       {/* 2. Separate About Section */}
