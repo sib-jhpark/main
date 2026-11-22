@@ -37,8 +37,8 @@ export const profileData: ProfileData = {
     en: 'Bridging Model-Based RL &\nMathematical Optimization to Real Robots.',
   },
   bio: {
-    ko: '(주)LG CNS 선임 · 물류·산업용 로봇 제어 최적화 알고리즘 및 운영 시뮬레이터 설계·개발\nKAIST 산업및시스템공학 석사 졸업 (4.15/4.3, 지도교수: [이다빈](https://dabeenl.github.io/)) · 모델 기반 강화학습(MBRL)·컨벡스·조합 최적화 연구, AISTATS 2025 단독 1저자 발표\n고려대학교 산업경영공학부 학사 · 양자 시스템 최적화 연구실(최인찬 교수) 학부연구생',
-    en: 'I am a Senior Associate at LG CNS, where I design and develop optimization algorithms and operational simulators for logistics and industrial robot fleets. Previously, I earned my M.S. in Industrial & Systems Engineering at KAIST (ranked 1st in department, GPA 4.15/4.3) advised by [Prof. Dabeen Lee](https://dabeenl.github.io/), researching Model-Based Reinforcement Learning (MBRL), convex optimization, and combinatorial optimization, with a sole first-author paper at AISTATS 2025 and a talk at INFORMS 2024. Prior to KAIST, I received my B.S. in Industrial Management Engineering from Korea University, where I worked as an undergraduate researcher in the Quantum Systems Optimization Lab.',
+    ko: '(주)LG CNS 선임 · 물류·산업용 로봇 제어 최적화 알고리즘 및 운영 시뮬레이터 설계·개발\nKAIST 산업및시스템공학 석사 졸업 (4.15/4.3, 지도교수: [이다빈](https://dabeenl.github.io/)) · 모델 기반 강화학습(MBRL)·컨벡스·조합 최적화 연구, AISTATS 2025 단독 1저자 발표\n고려대학교 산업경영공학부 학사 · 양자 시스템 최적화 연구실([최인찬 교수](https://optlab.korea.ac.kr/members)) 학부연구생',
+    en: 'I am a Senior Associate at LG CNS, where I design and develop optimization algorithms and operational simulators for logistics and industrial robot fleets. Previously, I earned my M.S. in Industrial & Systems Engineering at KAIST (ranked 1st in department, GPA 4.15/4.3) advised by [Prof. Dabeen Lee](https://dabeenl.github.io/), researching Model-Based Reinforcement Learning (MBRL), convex optimization, and combinatorial optimization, with a sole first-author paper at AISTATS 2025 and a talk at INFORMS 2024. Prior to KAIST, I received my B.S. in Industrial Management Engineering from Korea University, where I worked as an undergraduate researcher in the Quantum Systems Optimization Lab under [Prof. Inchan Choi](https://optlab.korea.ac.kr/members).',
   },
   currentFocus: [
     {
@@ -400,8 +400,8 @@ export const profileData: ProfileData = {
       },
       bullets: [
         {
-          ko: '양자 시스템 최적화 연구실(최인찬 교수) 학부연구생 — 양자 최적화 연구 및 ZX-calculus 자료 조사',
-          en: 'Undergraduate Researcher, Quantum Systems Optimization Lab (Prof. Inchan Choi) — Quantum optimization & ZX-calculus study',
+          ko: '양자 시스템 최적화 연구실([최인찬 교수](https://optlab.korea.ac.kr/members)) 학부연구생 — 양자 최적화 연구 및 ZX-calculus 자료 조사',
+          en: 'Undergraduate Researcher, Quantum Systems Optimization Lab ([Prof. Inchan Choi](https://optlab.korea.ac.kr/members)) — Quantum optimization & ZX-calculus study',
         },
       ],
     },
