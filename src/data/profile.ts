@@ -36,8 +36,8 @@ export const profileData: ProfileData = {
     en: 'Bridging Model-Based RL &\nMathematical Optimization to Real Robots.',
   },
   bio: {
-    ko: '(주)LG CNS 선임으로 재직하며 물류·산업용 로봇 제어 최적화 알고리즘과 운영 시뮬레이터를 설계·개발하고 있습니다. 이전에는 KAIST 산업및시스템공학과 석사 과정(학과 수석 졸업, 4.15/4.3)에서 모델 기반 강화학습(MBRL), 컨벡스 최적화, 조합 최적화 산학 문제를 연구하며 AISTATS 2025 단독 1저자 포스터 발표 및 INFORMS 2024 발표를 수행했습니다. 그에 앞서 고려대학교 산업경영공학부에서 학사 학위를 취득하고 양자 시스템 최적화 연구실(최인찬 교수) 학부연구생으로 활동했습니다.',
-    en: 'I am a Senior Associate at LG CNS, where I design and develop optimization algorithms and operational simulators for logistics and industrial robot fleets. Previously, I earned my M.S. in Industrial & Systems Engineering at KAIST (ranked 1st in department, GPA 4.15/4.3), researching Model-Based Reinforcement Learning (MBRL), convex optimization, and combinatorial optimization, with a sole first-author paper at AISTATS 2025 and a talk at INFORMS 2024. Prior to KAIST, I received my B.S. in Industrial Management Engineering from Korea University, where I worked as an undergraduate researcher in the Quantum Systems Optimization Lab.',
+    ko: '(주)LG CNS 선임으로 재직하며 물류·산업용 로봇 제어 최적화 알고리즘과 운영 시뮬레이터를 설계·개발하고 있습니다. 이전에는 KAIST 산업및시스템공학과 석사 과정(학과 수석 졸업, 4.15/4.3)에서 [이다빈 교수](https://dabeenl.github.io/) 지도 아래 모델 기반 강화학습(MBRL), 컨벡스 최적화, 조합 최적화 산학 문제를 연구하며 AISTATS 2025 단독 1저자 포스터 발표 및 INFORMS 2024 발표를 수행했습니다. 그에 앞서 고려대학교 산업경영공학부에서 학사 학위를 취득하고 양자 시스템 최적화 연구실(최인찬 교수) 학부연구생으로 활동했습니다.',
+    en: 'I am a Senior Associate at LG CNS, where I design and develop optimization algorithms and operational simulators for logistics and industrial robot fleets. Previously, I earned my M.S. in Industrial & Systems Engineering at KAIST (ranked 1st in department, GPA 4.15/4.3) advised by [Prof. Dabeen Lee](https://dabeenl.github.io/), researching Model-Based Reinforcement Learning (MBRL), convex optimization, and combinatorial optimization, with a sole first-author paper at AISTATS 2025 and a talk at INFORMS 2024. Prior to KAIST, I received my B.S. in Industrial Management Engineering from Korea University, where I worked as an undergraduate researcher in the Quantum Systems Optimization Lab.',
   },
   currentFocus: [
     {
@@ -359,6 +359,10 @@ export const profileData: ProfileData = {
         en: 'GPA 4.15 / 4.3 (Ranked 1/17 in Dept, 33/832 Overall) · Researched Model-Based RL, convex optimization theory, and industrial combinatorial optimization.',
       },
       bullets: [
+        {
+          ko: '지도교수: [이다빈 교수](https://dabeenl.github.io/) (Optimization and Algorithms Lab)',
+          en: 'Advisor: [Prof. Dabeen Lee](https://dabeenl.github.io/) (Optimization and Algorithms Lab)',
+        },
         {
           ko: '학회 발표: AISTATS 2025 (단독 1저자 포스터 발표), INFORMS 2024 발표',
           en: 'Conferences: AISTATS 2025 (Sole 1st author poster), INFORMS 2024 presentation',

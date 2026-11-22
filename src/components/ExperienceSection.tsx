@@ -2,6 +2,7 @@ import { Briefcase, GraduationCap } from 'lucide-react';
 import { useThemeLanguage } from '../context/ThemeLanguageContext';
 import { profileData } from '../data/profile';
 import type { ExperienceItem } from '../types/profile';
+import { renderTextWithLinks } from '../utils/renderTextWithLinks';
 
 function TimelineList({ items }: { items: ExperienceItem[] }) {
   const { pick } = useThemeLanguage();
@@ -33,7 +34,7 @@ function TimelineList({ items }: { items: ExperienceItem[] }) {
             </div>
 
             <p className="text-[14px] leading-relaxed text-[#86868B]">
-              {pick(item.summary)}
+              {renderTextWithLinks(pick(item.summary))}
             </p>
 
             {item.bullets.length > 0 && (
@@ -44,7 +45,7 @@ function TimelineList({ items }: { items: ExperienceItem[] }) {
                     className="flex items-start gap-2.5 text-[13.5px] leading-relaxed text-[#1D1D1F]/85 dark:text-[#F5F5F7]/85"
                   >
                     <span className="mt-2 w-1 h-1 rounded-full bg-[#86868B] shrink-0" />
-                    <span>{pick(bullet)}</span>
+                    <span>{renderTextWithLinks(pick(bullet))}</span>
                   </li>
                 ))}
               </ul>
