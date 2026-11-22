@@ -733,13 +733,13 @@
           </section>
 
           <!-- ============================================================ -->
-          <!-- SLIDE 3: PROBLEM & KPI METRICS                                -->
+          <!-- SLIDE 3: PROBLEM & KPI METRICS (+ YOUTUBE / IMAGE BUTTONS)    -->
           <!-- ============================================================ -->
           <section
             class="slide-page supplemented absolute inset-0 p-14 flex flex-col justify-between opacity-0 pointer-events-none transition-opacity duration-300"
             data-title-ko="문제 정의 & 핵심 지표"
             data-showcase="deep-dive"
-            data-notes-ko="문제의 배경과 정량적 병목을 강조합니다. 세부 사례나 아코디언 FAQ는 아래 링크를 눌러 쇼케이스 #deep-dive 섹션에서 보여줄 수 있습니다."
+            data-notes-ko="문제의 배경과 정량적 병목을 강조합니다. 우측 상단 버튼으로 YouTube 영상이나 고해상도 이미지를 현재 창 모달로 바로 띄울 수 있습니다."
           >
             <div>
               <p class="text-sm font-bold uppercase tracking-wider text-apple-blue dark:text-apple-blue-dark mb-2">
@@ -748,6 +748,28 @@
               <h2 class="text-4xl font-bold tracking-tight text-apple-text-primary dark:text-apple-text-primaryDark">
                 기존 방식의 한계와 해결해야 할 병목
               </h2>
+            </div>
+
+            <!-- ✏️ [커스텀]: 슬라이드 우측 상단 미디어 버튼 (YouTube 링크 / 이미지 확대 모달) -->
+            <div class="absolute top-12 right-14 flex items-center gap-2.5">
+              <a
+                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                target="_blank"
+                rel="noopener"
+                class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-apple-red/10 hover:bg-apple-red/15 text-apple-red text-sm font-semibold transition"
+              >
+                <i data-lucide="youtube" class="w-4 h-4"></i>
+                <span>YouTube 참고 영상</span>
+              </a>
+              <a
+                href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 675'%3E%3Crect width='1200' height='675' fill='%23F5F5F7'/%3E%3Crect x='48' y='48' width='1104' height='579' rx='28' fill='%23FFFFFF' stroke='%23D2D2D7' stroke-width='3'/%3E%3Ctext x='600' y='310' text-anchor='middle' font-family='sans-serif' font-size='36' font-weight='700' fill='%231D1D1F'%3EHigh-Resolution Figure / Poster%3C/text%3E%3Ctext x='600' y='368' text-anchor='middle' font-family='sans-serif' font-size='22' fill='%2386868B'%3Ehref%EC%9D%84 %22my-poster.png%22%EB%A1%9C %EB%B0%94%EA%BE%B8%EB%A9%B4 %EC%9D%B4%EB%AF%B8%EC%A7%80%EA%B0%80 %ED%81%AC%EA%B2%8C %EC%97%B4%EB%A6%BD%EB%8B%88%EB%8B%A4%3C/text%3E%3C/svg%3E"
+                data-image-modal
+                data-caption="예시 포스터 / 고해상도 이미지 모달 — href를 로컬 이미지 경로(예: poster.png)로 바꾸세요."
+                class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-apple-blue/10 hover:bg-apple-blue/15 text-apple-blue dark:text-apple-blue-dark text-sm font-semibold transition"
+              >
+                <i data-lucide="image" class="w-4 h-4"></i>
+                <span>이미지 크게 보기</span>
+              </a>
             </div>
 
             <div class="supplement-content">
@@ -980,7 +1002,128 @@
           </section>
 
           <!-- ============================================================ -->
-          <!-- SLIDE 6: CLOSING & Q&A                                        -->
+          <!-- SLIDE 6: MEDIA, VIDEO & IMAGE LAYOUT EXAMPLE                  -->
+          <!-- ✏️ [커스텀]: 이미지 <img>, YouTube 링크, 로컬 MP4 모달 예시    -->
+          <!-- ============================================================ -->
+          <section
+            class="slide-page supplemented absolute inset-0 p-14 flex flex-col justify-between opacity-0 pointer-events-none transition-opacity duration-300"
+            data-title-ko="미디어 · 영상 · 이미지 슬롯"
+            data-showcase="media-demo"
+            data-notes-ko="이미지 삽입, YouTube 링크(시작 시간 지정 가능), 로컬 MP4 영상 모달을 한 슬라이드에 배치하는 예시입니다."
+          >
+            <div>
+              <p class="text-sm font-bold uppercase tracking-wider text-apple-blue dark:text-apple-blue-dark mb-2">
+                05 · MEDIA &amp; DEMO EXAMPLES
+              </p>
+              <h2 class="text-4xl font-bold tracking-tight text-apple-text-primary dark:text-apple-text-primaryDark">
+                이미지 삽입 · YouTube · 로컬 영상 링크 예시
+              </h2>
+            </div>
+
+            <div class="supplement-content">
+              <div class="supplement-grid">
+                <!-- Left: Inline Image Slot (클릭 시 확대 모달) -->
+                <div class="supplement-panel flex flex-col justify-between gap-3">
+                  <div class="flex items-center justify-between">
+                    <h3 class="!mb-0">이미지 삽입 슬롯 (클릭 시 확대)</h3>
+                    <span class="text-xs font-mono text-apple-text-secondary">&lt;img src="figure.png"&gt;</span>
+                  </div>
+                  <!-- ✏️ [커스텀]: img src와 a href를 같은 폴더의 이미지 파일명(예: figure1.png)으로 바꾸세요 -->
+                  <a
+                    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 960 540'%3E%3Crect width='960' height='540' fill='%23F5F5F7'/%3E%3Crect x='24' y='24' width='912' height='492' rx='24' fill='%23FFFFFF' stroke='%23D2D2D7' stroke-width='2'/%3E%3Ccircle cx='280' cy='250' r='72' fill='%23E8F2FD' stroke='%230071E3' stroke-width='3'/%3E%3Ctext x='280' y='258' text-anchor='middle' font-family='sans-serif' font-size='22' font-weight='700' fill='%230071E3'%3EInput%3C/text%3E%3Cline x1='352' y1='250' x2='428' y2='250' stroke='%2386868B' stroke-width='4'/%3E%3Crect x='432' y='190' width='180' height='120' rx='20' fill='%23EAF8EE' stroke='%2334C759' stroke-width='3'/%3E%3Ctext x='522' y='258' text-anchor='middle' font-family='sans-serif' font-size='22' font-weight='700' fill='%23248A3D'%3EModel%3C/text%3E%3Cline x1='612' y1='250' x2='688' y2='250' stroke='%2386868B' stroke-width='4'/%3E%3Crect x='692' y='190' width='160' height='120' rx='20' fill='%231D1D1F'/%3E%3Ctext x='772' y='258' text-anchor='middle' font-family='sans-serif' font-size='22' font-weight='700' fill='%23FFFFFF'%3EOutput%3C/text%3E%3Ctext x='480' y='430' text-anchor='middle' font-family='sans-serif' font-size='20' fill='%2386868B'%3Esrc%EC%9D%84 %22my-figure.png%22%EB%A1%9C %EA%B5%90%EC%B2%B4%ED%95%98%EC%84%B8%EC%9A%94 (클릭하면 확대)%3C/text%3E%3C/svg%3E"
+                    data-image-modal
+                    data-caption="슬라이드 내 이미지 확대 예시 — 같은 폴더의 PNG/JPG 파일로 교체하세요."
+                    class="block rounded-xl overflow-hidden border border-apple-border dark:border-apple-borderDark hover:opacity-95 transition"
+                  >
+                    <img
+                      src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 960 540'%3E%3Crect width='960' height='540' fill='%23F5F5F7'/%3E%3Crect x='24' y='24' width='912' height='492' rx='24' fill='%23FFFFFF' stroke='%23D2D2D7' stroke-width='2'/%3E%3Ccircle cx='280' cy='250' r='72' fill='%23E8F2FD' stroke='%230071E3' stroke-width='3'/%3E%3Ctext x='280' y='258' text-anchor='middle' font-family='sans-serif' font-size='22' font-weight='700' fill='%230071E3'%3EInput%3C/text%3E%3Cline x1='352' y1='250' x2='428' y2='250' stroke='%2386868B' stroke-width='4'/%3E%3Crect x='432' y='190' width='180' height='120' rx='20' fill='%23EAF8EE' stroke='%2334C759' stroke-width='3'/%3E%3Ctext x='522' y='258' text-anchor='middle' font-family='sans-serif' font-size='22' font-weight='700' fill='%23248A3D'%3EModel%3C/text%3E%3Cline x1='612' y1='250' x2='688' y2='250' stroke='%2386868B' stroke-width='4'/%3E%3Crect x='692' y='190' width='160' height='120' rx='20' fill='%231D1D1F'/%3E%3Ctext x='772' y='258' text-anchor='middle' font-family='sans-serif' font-size='22' font-weight='700' fill='%23FFFFFF'%3EOutput%3C/text%3E%3Ctext x='480' y='430' text-anchor='middle' font-family='sans-serif' font-size='20' fill='%2386868B'%3Esrc%EC%9D%84 %22my-figure.png%22%EB%A1%9C %EA%B5%90%EC%B2%B4%ED%95%98%EC%84%B8%EC%9A%94 (클릭하면 확대)%3C/text%3E%3C/svg%3E"
+                      alt="예시 다이어그램 이미지"
+                      class="w-full h-auto block"
+                    />
+                  </a>
+                  <p class="supplement-note">
+                    같은 폴더에 이미지(PNG/JPG/SVG)를 넣고 <code>src</code>와 <code>href</code>만 바꾸면 슬라이드 표시 + 클릭 확대가 자동 동작합니다.
+                  </p>
+                </div>
+
+                <!-- Right: YouTube & Local Video Links -->
+                <div class="supplement-panel flex flex-col justify-between">
+                  <div>
+                    <h3>YouTube &amp; 로컬 영상 링크 연결</h3>
+                    <dl class="supplement-rows">
+                      <div>
+                        <dt class="flex items-center gap-3">
+                          <span>YouTube 일반 / 시작 시간 지정</span>
+                          <!-- ✏️ [커스텀]: YouTube URL 교체 (&t=30처럼 시작 초 지정 가능) -->
+                          <span class="ml-auto flex items-center gap-1.5">
+                            <a
+                              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                              target="_blank"
+                              rel="noopener"
+                              class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg bg-apple-red/10 hover:bg-apple-red/15 text-apple-red text-sm font-semibold transition"
+                            >
+                              <i data-lucide="youtube" class="w-3.5 h-3.5"></i>
+                              <span>Demo 1</span>
+                            </a>
+                            <a
+                              href="https://youtu.be/dQw4w9WgXcQ?t=42"
+                              target="_blank"
+                              rel="noopener"
+                              class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg bg-apple-red/10 hover:bg-apple-red/15 text-apple-red text-sm font-semibold transition"
+                            >
+                              <i data-lucide="youtube" class="w-3.5 h-3.5"></i>
+                              <span>42초부터</span>
+                            </a>
+                          </span>
+                        </dt>
+                        <dd class="text-base text-apple-text-secondary dark:text-apple-text-secondaryDark">
+                          웹(HTTPS/로컬서버)에서는 현재 창 모달로 재생되고, 파일 직접 열기(<code>file://</code>)에서는 새 탭으로 안전하게 열립니다.
+                        </dd>
+                      </div>
+
+                      <div>
+                        <dt class="flex items-center gap-3">
+                          <span>로컬 MP4 영상 (오프라인 재생)</span>
+                          <!-- ✏️ [커스텀]: 같은 폴더에 demo.mp4를 넣고 href를 바꾸세요 -->
+                          <span class="ml-auto">
+                            <a
+                              href="demo.mp4"
+                              data-local-video
+                              class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg bg-apple-blue/10 hover:bg-apple-blue/15 text-apple-blue dark:text-apple-blue-dark text-sm font-semibold transition"
+                            >
+                              <i data-lucide="play-circle" class="w-3.5 h-3.5"></i>
+                              <span>demo.mp4 재생</span>
+                            </a>
+                          </span>
+                        </dt>
+                        <dd class="text-base text-apple-text-secondary dark:text-apple-text-secondaryDark">
+                          링크에 <code>data-local-video</code> 속성만 붙이면 인터넷이 없어도 슬라이드 위 모달에서 MP4를 바로 재생합니다.
+                        </dd>
+                      </div>
+                    </dl>
+                  </div>
+                  <p class="supplement-note pt-2">
+                    ※ 영상 재생 중에는 <kbd class="font-mono">ESC</kbd> 또는 바깥 영역 클릭으로 모달을 닫습니다.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between pt-1">
+                <p class="supplement-note">쇼케이스에서는 YouTube 임베드와 대형 이미지 갤러리를 스크롤로 볼 수 있습니다.</p>
+                <a class="supplement-link" href="interactive-showcase.html?from=6#media-demo">
+                  이미지 · 영상 임베드 쇼케이스 보기 <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="slide-footer flex items-center justify-between text-base text-apple-text-tertiary">
+              <span>Your Seminar · Media Examples</span>
+              <span class="slide-num font-mono tabular-nums">6 / 7</span>
+            </div>
+          </section>
+
+          <!-- ============================================================ -->
+          <!-- SLIDE 7: CLOSING & Q&A                                        -->
           <!-- ============================================================ -->
           <section
             class="slide-page closing-section supplemented accent-purple absolute inset-0 p-14 flex flex-col justify-between opacity-0 pointer-events-none transition-opacity duration-300"
@@ -990,7 +1133,7 @@
           >
             <div>
               <p class="text-sm font-bold uppercase tracking-wider text-apple-purple dark:text-apple-purple-dark mb-2">
-                05 · CONCLUSION &amp; Q&amp;A
+                06 · CONCLUSION &amp; Q&amp;A
               </p>
               <h2 class="text-5xl font-bold tracking-tight text-apple-text-primary dark:text-apple-text-primaryDark">
                 감사합니다 · Thank You
@@ -1029,7 +1172,7 @@
 
               <div class="flex items-center justify-between pt-1">
                 <p class="supplement-note">Q&amp;A 중 참고 문헌이나 추가 자료가 필요하면 우측 링크로 이동하세요.</p>
-                <a class="supplement-link" href="interactive-showcase.html?from=6#references">
+                <a class="supplement-link" href="interactive-showcase.html?from=7#references">
                   참고 문헌 · 원본 자료 목록 보기 <span aria-hidden="true">↗</span>
                 </a>
               </div>
@@ -1037,7 +1180,7 @@
 
             <div class="slide-footer flex items-center justify-between text-base text-apple-text-tertiary">
               <span>Dual-Mode Presentation Template · Designed by Jaehyun Park</span>
-              <span class="slide-num font-mono tabular-nums">6 / 6</span>
+              <span class="slide-num font-mono tabular-nums">7 / 7</span>
             </div>
           </section>
         </div>
@@ -1129,6 +1272,77 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Video Modal: YouTube 링크 및 로컬 MP4(data-local-video) 현재 창 재생 -->
+    <div
+      id="videoModal"
+      onclick="if (event.target === this) closeVideo();"
+      class="no-print fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-6 hidden"
+    >
+      <div class="w-full max-w-5xl space-y-3">
+        <div class="flex items-center justify-between">
+          <a
+            id="videoExternal"
+            href="#"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-1.5 text-xs font-medium text-white/75 hover:text-white"
+          >
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            <span id="videoExternalLabel">YouTube에서 열기</span>
+          </a>
+          <button
+            onclick="closeVideo()"
+            class="w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition"
+            aria-label="영상 닫기"
+          >
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+        <div class="aspect-video w-full rounded-2xl overflow-hidden bg-black shadow-apple-modal">
+          <iframe
+            id="videoFrame"
+            class="w-full h-full"
+            title="YouTube video"
+            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+            allowfullscreen
+            referrerpolicy="strict-origin-when-cross-origin"
+          ></iframe>
+          <video id="localVideo" class="w-full h-full hidden" controls playsinline preload="metadata"></video>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image Lightbox Modal: data-image-modal 링크 클릭 시 이미지 크게 보기 -->
+    <dialog
+      id="imageModal"
+      class="no-print fixed inset-0 m-auto w-[92vw] max-w-6xl max-h-[90vh] p-0 rounded-2xl bg-white dark:bg-apple-surfaceDark shadow-apple-modal backdrop:bg-black/80 backdrop:backdrop-blur-sm overflow-hidden"
+      onclick="if (event.target === this) closeImageModal();"
+    >
+      <div class="flex flex-col max-h-[90vh]">
+        <div class="flex items-center justify-between px-5 py-3 border-b border-apple-border dark:border-apple-borderDark">
+          <span id="imageModalCaption" class="text-xs font-medium text-apple-text-secondary truncate pr-4"></span>
+          <button
+            type="button"
+            onclick="closeImageModal()"
+            class="px-3 py-1 rounded-lg bg-apple-subtle dark:bg-apple-subtleDark text-xs font-semibold text-apple-text-primary dark:text-apple-text-primaryDark"
+          >
+            닫기 (ESC)
+          </button>
+        </div>
+        <div class="p-4 overflow-auto flex items-center justify-center bg-apple-canvas dark:bg-apple-canvasDark">
+          <img id="imageModalImg" src="" alt="" class="max-w-full max-h-[78vh] object-contain rounded-xl" />
+        </div>
+      </div>
+    </dialog>
+
+    <!-- Toast Notification -->
+    <div
+      id="toast"
+      class="fixed bottom-6 right-6 z-50 bg-apple-text-primary dark:bg-white text-white dark:text-black px-4 py-2.5 rounded-xl text-xs font-medium shadow-apple-modal opacity-0 pointer-events-none transform translate-y-3 transition-all duration-200 flex items-center gap-2 no-print"
+    >
+      <span id="toastMsg"></span>
     </div>
 
     <script>
@@ -1432,9 +1646,133 @@
         deck.style.setProperty("--deck-scale", scale);
       }
 
+      // ====================================================
+      // MEDIA MODALS (YouTube, Local MP4, Image Lightbox)
+      // ====================================================
+      function youtubeId(href) {
+        try {
+          const url = new URL(href);
+          if (url.hostname.includes("youtu.be")) return url.pathname.slice(1);
+          if (url.hostname.includes("youtube.com")) {
+            if (url.pathname.startsWith("/shorts/")) return url.pathname.split("/")[2];
+            if (url.pathname.startsWith("/embed/")) return url.pathname.split("/")[2];
+            return url.searchParams.get("v");
+          }
+        } catch (_) {}
+        return null;
+      }
+
+      function youtubeStartSeconds(href) {
+        try {
+          const t = new URL(href).searchParams.get("t") || new URL(href).searchParams.get("start") || "";
+          const match = t.match(/(\d+)/);
+          return match ? Number(match[1]) : 0;
+        } catch (_) {
+          return 0;
+        }
+      }
+
+      function showToast(msg) {
+        const toast = document.getElementById("toast");
+        const msgEl = document.getElementById("toastMsg");
+        if (!toast || !msgEl) return;
+        msgEl.textContent = msg;
+        toast.classList.remove("opacity-0", "pointer-events-none", "translate-y-3");
+        setTimeout(() => {
+          toast.classList.add("opacity-0", "pointer-events-none", "translate-y-3");
+        }, 2600);
+      }
+
+      function openVideo(href) {
+        const id = youtubeId(href);
+        if (!id) return false;
+        // file:// 에서는 YouTube가 iframe 임베드를 차단하므로 새 탭으로 자동 폴백
+        if (location.protocol === "file:") return false;
+        const player = document.getElementById("localVideo");
+        const frame = document.getElementById("videoFrame");
+        player.classList.add("hidden");
+        frame.classList.remove("hidden");
+        document.getElementById("videoExternalLabel").textContent = "YouTube에서 열기 ↗";
+        frame.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&start=${youtubeStartSeconds(href)}`;
+        document.getElementById("videoExternal").href = href;
+        document.getElementById("videoModal").classList.remove("hidden");
+        return true;
+      }
+
+      function openLocalVideo(href) {
+        const player = document.getElementById("localVideo");
+        const frame = document.getElementById("videoFrame");
+        frame.classList.add("hidden");
+        frame.src = "about:blank";
+        player.classList.remove("hidden");
+        player.src = href;
+        document.getElementById("videoExternal").href = href;
+        document.getElementById("videoExternalLabel").textContent = "영상 파일 열기 ↗";
+        document.getElementById("videoModal").classList.remove("hidden");
+        player.play().catch(() => {
+          showToast("같은 폴더에 해당 MP4 파일을 넣어두면 바로 재생됩니다.");
+        });
+      }
+
+      function closeVideo() {
+        const modal = document.getElementById("videoModal");
+        if (!modal || modal.classList.contains("hidden")) return;
+        modal.classList.add("hidden");
+        const player = document.getElementById("localVideo");
+        player.pause();
+        player.removeAttribute("src");
+        player.load();
+        document.getElementById("videoFrame").src = "about:blank";
+      }
+
+      function isVideoOpen() {
+        const modal = document.getElementById("videoModal");
+        return modal && !modal.classList.contains("hidden");
+      }
+
+      function openImageModal(src, caption) {
+        const dialog = document.getElementById("imageModal");
+        const img = document.getElementById("imageModalImg");
+        const cap = document.getElementById("imageModalCaption");
+        if (!dialog || !img) return;
+        img.src = src;
+        img.alt = caption || "Expanded image";
+        if (cap) cap.textContent = caption || "";
+        dialog.showModal();
+      }
+
+      function closeImageModal() {
+        const dialog = document.getElementById("imageModal");
+        if (dialog && dialog.open) dialog.close();
+      }
+
+      document.addEventListener("click", (e) => {
+        const imgLink = e.target.closest(".slide-page a[data-image-modal]");
+        if (imgLink && !e.metaKey && !e.ctrlKey && !e.shiftKey) {
+          e.preventDefault();
+          openImageModal(imgLink.getAttribute("href"), imgLink.dataset.caption || "");
+          return;
+        }
+        const localLink = e.target.closest(".slide-page a[data-local-video]");
+        if (localLink && !e.metaKey && !e.ctrlKey && !e.shiftKey) {
+          e.preventDefault();
+          openLocalVideo(localLink.getAttribute("href"));
+          return;
+        }
+        const ytLink = e.target.closest(".slide-page a[href]");
+        if (ytLink && !e.metaKey && !e.ctrlKey && !e.shiftKey && youtubeId(ytLink.href)) {
+          if (openVideo(ytLink.href)) e.preventDefault();
+        }
+      });
+
       window.addEventListener("keydown", (e) => {
         if (e.metaKey || e.ctrlKey || e.altKey) return;
-        if (e.target.isContentEditable || e.target.closest("a, button, input, textarea, select")) return;
+        if (document.getElementById("imageModal")?.open) return;
+        if (isVideoOpen()) {
+          if (e.key === "Escape") closeVideo();
+          return;
+        }
+        if (e.target.isContentEditable || e.target.closest("a, button, input, textarea, select, video")) return;
 
         switch (e.key) {
           case "ArrowRight":

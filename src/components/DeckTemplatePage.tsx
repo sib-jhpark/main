@@ -156,8 +156,8 @@ export function DeckTemplatePage() {
             </h2>
             <p className="text-xs leading-relaxed text-[#86868B]">
               {language === 'ko'
-                ? 'npm 설치나 localhost 실행 없이 두 HTML 파일을 같은 폴더에 저장하고 더블클릭하면 다크 모드 동기화·발표자 노트까지 그대로 동작합니다.'
-                : 'No npm, bundler, or localhost setup. Put both HTML files in one folder and double-click—dark mode sync and presenter notes work immediately.'}
+                ? 'npm 설치나 localhost 실행 없이 두 HTML 파일을 같은 폴더에 저장하고 더블클릭하면 다크 모드 동기화·발표자 노트·이미지 확대 모달·YouTube/로컬 MP4 재생까지 그대로 동작합니다.'
+                : 'No npm, bundler, or localhost setup. Put both HTML files in one folder and double-click—dark mode sync, presenter notes, image lightbox, and YouTube/local MP4 playback work immediately.'}
             </p>
           </div>
         </div>

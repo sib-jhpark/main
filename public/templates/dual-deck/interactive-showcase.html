@@ -233,11 +233,38 @@
         overflow: hidden;
       }
 
+      .asset > a {
+        display: block;
+        background: #ffffff;
+      }
+
+      .asset img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+
+      .asset.show-video iframe,
+      .asset.show-video video {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border: 0;
+        background: #000000;
+      }
+
       .asset figcaption {
         padding: 14px 20px;
         font-size: 13.5px;
         color: var(--show-muted);
         border-top: 1px solid var(--show-line);
+      }
+
+      .asset figcaption a {
+        margin-left: 12px;
+        white-space: nowrap;
+        font-weight: 600;
       }
 
       .todo {
@@ -422,6 +449,7 @@
         <a href="#deep-dive">문제 배경 &amp; FAQ</a>
         <a href="#architecture">수식 &amp; 아키텍처</a>
         <a href="#benchmarks">전체 벤치마크</a>
+        <a href="#media-demo">이미지 &amp; 영상</a>
         <a href="#references">참고 문헌</a>
       </nav>
     </header>
@@ -589,10 +617,69 @@
       </section>
 
       <!-- ============================================================ -->
-      <!-- SECTION 4: REFERENCES (연결 슬라이드: Slide 6)                 -->
+      <!-- SECTION 4: MEDIA — IMAGE, YOUTUBE, LOCAL VIDEO (Slide 6)      -->
       <!-- ============================================================ -->
-      <section class="show-section" id="references" data-slide="6" aria-labelledby="references-title">
-        <p class="show-kicker">SLIDE 6 · REFERENCES</p>
+      <section class="show-section" id="media-demo" data-slide="6" aria-labelledby="media-demo-title">
+        <p class="show-kicker">SLIDE 6 · MEDIA EXAMPLES</p>
+        <h2 id="media-demo-title">이미지 · YouTube · 로컬 영상 임베드 예시</h2>
+        <p class="show-intro">
+          아래 3가지 블록을 복사해 원하는 섹션에 붙여넣고 경로(<code>src</code>)나 YouTube 영상 ID만 교체하세요.
+        </p>
+
+        <h3>1. 이미지 삽입 (클릭 시 원본 새 탭 열기)</h3>
+        <!-- ✏️ [커스텀]: img src와 a href를 같은 폴더의 이미지 파일명(예: figure1.png)으로 바꾸세요 -->
+        <figure class="asset">
+          <a
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600'%3E%3Crect width='1200' height='600' fill='%23F5F5F7'/%3E%3Crect x='40' y='40' width='1120' height='520' rx='24' fill='%23FFFFFF' stroke='%23D2D2D7' stroke-width='2'/%3E%3Ctext x='600' y='285' text-anchor='middle' font-family='sans-serif' font-size='34' font-weight='700' fill='%231D1D1F'%3EImage Slot Placeholder (1200×600)%3C/text%3E%3Ctext x='600' y='340' text-anchor='middle' font-family='sans-serif' font-size='20' fill='%2386868B'%3Eimg src=%22your-image.png%22 %EB%A1%9C %EA%B5%90%EC%B2%B4%ED%95%98%EC%84%B8%EC%9A%94%3C/text%3E%3C/svg%3E"
+            target="_blank"
+            rel="noopener"
+          >
+            <img
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600'%3E%3Crect width='1200' height='600' fill='%23F5F5F7'/%3E%3Crect x='40' y='40' width='1120' height='520' rx='24' fill='%23FFFFFF' stroke='%23D2D2D7' stroke-width='2'/%3E%3Ctext x='600' y='285' text-anchor='middle' font-family='sans-serif' font-size='34' font-weight='700' fill='%231D1D1F'%3EImage Slot Placeholder (1200×600)%3C/text%3E%3Ctext x='600' y='340' text-anchor='middle' font-family='sans-serif' font-size='20' fill='%2386868B'%3Eimg src=%22your-image.png%22 %EB%A1%9C %EA%B5%90%EC%B2%B4%ED%95%98%EC%84%B8%EC%9A%94%3C/text%3E%3C/svg%3E"
+              alt="예시 이미지 슬롯"
+              loading="lazy"
+            />
+          </a>
+          <figcaption>
+            이미지 캡션 예시 · 출처 표기
+            <a href="https://example.com" target="_blank" rel="noopener">공식 출처 ↗</a>
+          </figcaption>
+        </figure>
+
+        <h3>2. YouTube 영상 임베드 (시작 시간 지정 가능)</h3>
+        <!-- ✏️ [커스텀]: embed/ 뒤의 영상 ID와 ?start=초 를 원하는 영상으로 교체하세요 -->
+        <figure class="asset show-video">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?start=0"
+            title="YouTube 참고 영상 예시"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+          <figcaption>
+            YouTube 참고 영상 예시 (로컬 파일 직접 열기에서는 우측 링크로 바로 여세요)
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener">YouTube에서 보기 ↗</a>
+          </figcaption>
+        </figure>
+
+        <h3>3. 로컬 MP4 영상 삽입 (오프라인 재생 가능)</h3>
+        <!-- ✏️ [커스텀]: 같은 폴더에 demo.mp4를 넣고 src를 파일명으로 교체하세요 -->
+        <figure class="asset show-video">
+          <video controls playsinline preload="metadata" poster="">
+            <source src="demo.mp4" type="video/mp4" />
+          </video>
+          <figcaption>로컬 데모 영상 예시 — 같은 폴더에 <code>demo.mp4</code>를 넣으면 바로 재생됩니다.</figcaption>
+        </figure>
+
+        <a class="section-return" data-return data-fallback="6" href="presentation.html#slide-6">발표로 돌아가기 ↗</a>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- SECTION 5: REFERENCES (연결 슬라이드: Slide 7)                 -->
+      <!-- ============================================================ -->
+      <section class="show-section" id="references" data-slide="7" aria-labelledby="references-title">
+        <p class="show-kicker">SLIDE 7 · REFERENCES</p>
         <h2 id="references-title">참고 문헌 및 원본 출처</h2>
         <p class="show-intro">발표에서 인용한 논문, 공식 문서, 오픈소스 저장소 링크를 한곳에 모아둡니다.</p>
         <ul>
@@ -600,7 +687,7 @@
           <li><strong>Author et al. (2026)</strong> — <em>Another Related Work</em>, Journal / Preprint.</li>
           <li><strong>Project Repository</strong> — <code>https://github.com/your-handle/your-repo</code></li>
         </ul>
-        <a class="section-return" data-return data-fallback="6" href="presentation.html#slide-6">발표로 돌아가기 ↗</a>
+        <a class="section-return" data-return data-fallback="7" href="presentation.html#slide-7">발표로 돌아가기 ↗</a>
       </section>
 
       <footer class="show-footer">Your Name · Dual-Mode Presentation Template · 2026</footer>
