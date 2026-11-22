@@ -246,6 +246,14 @@
         display: none;
       }
 
+      #exitFullscreenBtn {
+        display: none;
+      }
+
+      body.presenting #exitFullscreenBtn {
+        display: inline-flex;
+      }
+
       @media (max-width: 640px) and (orientation: portrait) {
         .mobile-portrait-tip {
           display: flex;
@@ -1221,6 +1229,19 @@
         </div>
       </div>
     </main>
+
+    <!-- Floating Exit Fullscreen Button (전체화면 발표 모드에서만 표시 — 모바일/터치 기기 대응) -->
+    <button
+      id="exitFullscreenBtn"
+      type="button"
+      onclick="toggleFullscreen()"
+      title="전체화면 종료 (ESC / F)"
+      aria-label="전체화면 종료"
+      class="no-print fixed top-3 right-3 z-50 items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/55 hover:bg-black/80 text-white text-xs font-semibold backdrop-blur-md opacity-45 hover:opacity-100 active:opacity-100 transition-opacity shadow-lg"
+    >
+      <i data-lucide="minimize-2" class="w-3.5 h-3.5"></i>
+      <span>종료</span>
+    </button>
 
     <!-- Bottom Dot Indicators -->
     <footer class="no-print h-10 flex items-center justify-center gap-2 shrink-0 select-none">
