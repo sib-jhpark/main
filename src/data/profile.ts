@@ -461,7 +461,7 @@ export const profileData: ProfileData = {
     },
     {
       id: 'simulation',
-      title: { ko: 'Simulation', en: 'Simulation' },
+      title: { ko: 'Simulation & 3D monitoring', en: 'Simulation & 3D monitoring' },
       description: {
         ko: '초정밀 물리 시뮬레이터 및 디지털 트윈',
         en: 'High-fidelity physics simulation & digital twins',
