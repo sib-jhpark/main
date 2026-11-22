@@ -2,7 +2,7 @@ import { Globe, Moon, Sun } from 'lucide-react';
 import { useThemeLanguage } from '../context/ThemeLanguageContext';
 import { profileData } from '../data/profile';
 
-export type TopTabId = 'home' | 'two-state-mbrl';
+export type TopTabId = 'home' | 'two-state-mbrl' | 'sogs';
 
 export interface NavItem {
   id: TopTabId;
@@ -21,6 +21,7 @@ export const NAV_ITEMS: NavItem[] = [
     href: '#two-state-mbrl',
     label: { ko: 'Two-State MBRL', en: 'Two-State MBRL' },
   },
+  { id: 'sogs', href: '#sogs', label: { ko: 'SOGS', en: 'SOGS' } },
 ];
 
 interface TopNavBarProps {
