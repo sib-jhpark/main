@@ -35,7 +35,7 @@ export function TopNavBar({ activeTab, onSelectTab }: TopNavBarProps) {
 
   return (
     <header className="sticky top-0 z-40 glass-panel transition-colors duration-300">
-      <div className="max-w-[1120px] mx-auto px-5 sm:px-8 h-[52px] flex items-center justify-between gap-4">
+      <div className="max-w-[1120px] mx-auto px-4 sm:px-8 flex flex-wrap md:flex-nowrap items-center justify-between md:h-[52px] md:gap-4">
         {/* Left: Brand Wordmark */}
         <a
           href="#home"
@@ -43,7 +43,7 @@ export function TopNavBar({ activeTab, onSelectTab }: TopNavBarProps) {
             e.preventDefault();
             onSelectTab('home');
           }}
-          className="flex items-center gap-2.5 group focus:outline-none shrink-0"
+          className="order-1 h-[46px] md:h-auto flex items-center gap-2.5 group focus:outline-none shrink-0"
         >
           <span className="font-bold tracking-tight text-[15px] text-[#0071E3] dark:text-[#2997FF]">
             {profileData.brand}
@@ -53,8 +53,11 @@ export function TopNavBar({ activeTab, onSelectTab }: TopNavBarProps) {
           </span>
         </a>
 
-        {/* Center: Top-Level GNB */}
-        <nav aria-label="Primary" className="flex items-center h-full gap-1 overflow-x-auto no-scrollbar">
+        {/* Center (Desktop) / Second Row (Mobile): Top-Level GNB */}
+        <nav
+          aria-label="Primary"
+          className="order-3 md:order-2 w-full md:w-auto border-t border-black/[0.05] dark:border-white/[0.06] md:border-t-0 flex items-center h-[40px] md:h-full gap-0.5 sm:gap-1 overflow-x-auto no-scrollbar"
+        >
           {NAV_ITEMS.map((item) => {
             const isActive = activeTab === item.id;
             return (
@@ -66,7 +69,7 @@ export function TopNavBar({ activeTab, onSelectTab }: TopNavBarProps) {
                   onSelectTab(item.id);
                 }}
                 aria-current={isActive ? 'page' : undefined}
-                className={`relative h-full px-3.5 flex items-center text-[13px] font-semibold whitespace-nowrap transition-colors ${
+                className={`relative h-full px-2.5 sm:px-3.5 flex items-center text-[12.5px] sm:text-[13px] font-semibold whitespace-nowrap transition-colors shrink-0 ${
                   isActive
                     ? 'text-[#0071E3] dark:text-[#2997FF]'
                     : 'text-[#86868B] hover:text-[#1D1D1F] dark:hover:text-[#F5F5F7]'
@@ -74,7 +77,7 @@ export function TopNavBar({ activeTab, onSelectTab }: TopNavBarProps) {
               >
                 {pick(item.label)}
                 {isActive && (
-                  <span className="absolute bottom-0 left-3 right-3 h-[2px] rounded-full bg-[#0071E3] dark:bg-[#2997FF]" />
+                  <span className="absolute bottom-0 left-2.5 right-2.5 sm:left-3 sm:right-3 h-[2px] rounded-full bg-[#0071E3] dark:bg-[#2997FF]" />
                 )}
               </a>
             );
@@ -82,7 +85,7 @@ export function TopNavBar({ activeTab, onSelectTab }: TopNavBarProps) {
         </nav>
 
         {/* Right: Language & Theme Controls */}
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="order-2 md:order-3 h-[46px] md:h-auto flex items-center gap-2 shrink-0">
           <button
             type="button"
             onClick={toggleLanguage}
