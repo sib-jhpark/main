@@ -10,7 +10,6 @@ type FilterValue = 'all' | ProjectCategory;
 const FILTERS: { value: FilterValue; label: { ko: string; en: string } }[] = [
   { value: 'all', label: { ko: '전체', en: 'All' } },
   { value: 'rl', label: { ko: 'RL · Robotics', en: 'RL · Robotics' } },
-  { value: 'optimization', label: { ko: 'Optimization · Sim', en: 'Optimization · Sim' } },
   { value: 'fintech', label: { ko: 'Quant · Product', en: 'Quant · Product' } },
 ];
 

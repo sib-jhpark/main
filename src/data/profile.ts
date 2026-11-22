@@ -37,8 +37,8 @@ export const profileData: ProfileData = {
     en: 'Bridging Model-Based RL &\nMathematical Optimization to Real Robots.',
   },
   bio: {
-    ko: '(주)LG CNS 선임 · 물류·산업용 로봇 제어 최적화 알고리즘 및 운영 시뮬레이터 설계·개발\nKAIST 산업및시스템공학 석사 졸업 (4.15/4.3, 지도교수: [이다빈](https://dabeenl.github.io/)) · 모델 기반 강화학습(MBRL)·컨벡스·조합 최적화 연구, AISTATS 2025 단독 1저자 발표\n고려대학교 산업경영공학부 학사 · 양자 시스템 최적화 연구실([최인찬 교수](https://optlab.korea.ac.kr/members)) 학부연구생',
-    en: 'I am a Senior Associate at LG CNS, where I design and develop optimization algorithms and operational simulators for logistics and industrial robot fleets. Previously, I earned my M.S. in Industrial & Systems Engineering at KAIST (ranked 1st in department, GPA 4.15/4.3) advised by [Prof. Dabeen Lee](https://dabeenl.github.io/), researching Model-Based Reinforcement Learning (MBRL), convex optimization, and combinatorial optimization, with a sole first-author paper at AISTATS 2025 and a talk at INFORMS 2024. Prior to KAIST, I received my B.S. in Industrial Management Engineering from Korea University, where I worked as an undergraduate researcher in the Quantum Systems Optimization Lab under [Prof. Inchan Choi](https://optlab.korea.ac.kr/members).',
+    ko: '(주)LG CNS 선임 · 물류·산업용 로봇 제어 최적화 알고리즘 및 운영 시뮬레이터 설계·개발\nKAIST 산업및시스템공학 석사 졸업 (지도교수: [이다빈](https://dabeenl.github.io/)) · 모델 기반 강화학습(MBRL)·컨벡스·조합 최적화 연구, AISTATS 2025 단독 1저자 발표\n고려대학교 산업경영공학부 학사 · 양자 시스템 최적화 연구실([최인찬 교수](https://optlab.korea.ac.kr/members)) 학부연구생',
+    en: 'I am a Senior Associate at LG CNS, where I design and develop optimization algorithms and operational simulators for logistics and industrial robot fleets. Previously, I earned my M.S. in Industrial & Systems Engineering at KAIST advised by [Prof. Dabeen Lee](https://dabeenl.github.io/), researching Model-Based Reinforcement Learning (MBRL), convex optimization, and combinatorial optimization, with a sole first-author paper at AISTATS 2025 and a talk at INFORMS 2024. Prior to KAIST, I received my B.S. in Industrial Management Engineering from Korea University, where I worked as an undergraduate researcher in the Quantum Systems Optimization Lab under [Prof. Inchan Choi](https://optlab.korea.ac.kr/members).',
   },
   currentFocus: [
     {
@@ -219,52 +219,6 @@ export const profileData: ProfileData = {
         },
       ],
     },
-    {
-      id: 'pwb-omniverse-simulator',
-      title: 'PWB Robotics Platform & Isaac Sim Emulator',
-      subtitle: {
-        ko: '이기종 로봇 제어 최적화 알고리즘 및 Omniverse · Isaac Sim 운영 시뮬레이터',
-        en: 'Heterogeneous robot optimization algorithms & Omniverse / Isaac Sim emulator',
-      },
-      category: 'optimization',
-      status: 'completed',
-      year: '2026',
-      summary: {
-        ko: 'LG CNS 이기종 로봇 플랫폼(피지컬 웍스 바톤, PWB) Contextual Bandit 자원 할당, 적응형 배터리 최적화 및 NVIDIA Omniverse Kit·Isaac Sim 3D 운영 시뮬레이터 MVP 구축',
-        en: 'Engineered Contextual Bandit task allocation, adaptive battery optimization, and NVIDIA Omniverse Kit / Isaac Sim 3D operational emulator MVP for LG CNS PWB.',
-      },
-      impact: {
-        ko: 'Contextual Bandit Warm-Start 할당 · 3모드 배터리 최적화 · WebRTC 3D 모니터링 MVP 구현',
-        en: 'Contextual Bandit warm-start allocation, 3-mode battery optimization & WebRTC 3D MVP',
-      },
-      role: {
-        ko: 'LG CNS 선임 · 알고리즘 설계 · 시뮬레이터 MVP 개발',
-        en: 'LG CNS Senior Associate · Algorithm Design & Simulator MVP',
-      },
-      tech: ['Contextual Bandit', 'NVIDIA Omniverse', 'Isaac Sim', 'cuOpt', 'WebRTC', 'Python'],
-      problem: {
-        ko: '이기종 로봇 혼재 물류 현장 배포 전 자원 할당·경로·배터리 전략의 안전한 사전 정밀 검증 환경 부재',
-        en: 'Deploying allocation, routing, and battery algorithms to heterogeneous robot fleets required a high-fidelity simulation environment prior to live floor rollout.',
-      },
-      solution: {
-        ko: '비용 함수 기반 Warm-Start Contextual Bandit 및 3모드 배터리 로직 설계, NVIDIA Omniverse Kit·WebRTC 3D 뷰 및 Isaac Sim 초정밀 운영 시뮬레이터 MVP 구현',
-        en: 'Designed cost-function warm-started Contextual Bandits and 3-mode adaptive battery control, paired with an Omniverse Kit WebRTC 3D viewer and Isaac Sim emulator MVP.',
-      },
-      highlights: [
-        {
-          ko: '강화학습 계열 Contextual Bandit 기반 로봇-작업 분배(Action, Reward Model, 학습 파이프라인, Warm-Start)',
-          en: 'Contextual Bandit task dispatch with custom action/reward models and cost-function warm start',
-        },
-        {
-          ko: '일반·무중단·다크 팩토리 3가지 운영 모드를 환경에 따라 전환하는 적응형 배터리 최적화 모듈',
-          en: 'Adaptive battery module switching across Normal, Non-Stop, and Dark Factory modes',
-        },
-        {
-          ko: 'LG–NVIDIA 협업 미팅 PWB 발표 및 Omniverse Assets · Isaac Sim · cuOpt 활용 방안 발굴',
-          en: 'Presented PWB in LG–NVIDIA collaboration meetings, exploring Isaac Mission Control & cuOpt',
-        },
-      ],
-    },
   ],
   experiences: [
     {
@@ -348,16 +302,16 @@ export const profileData: ProfileData = {
         en: 'KAIST (Korea Advanced Institute of Science and Technology)',
       },
       role: {
-        ko: '산업및시스템공학 석사 · 학과 졸업',
-        en: 'M.S. in Industrial & Systems Engineering · Valedictorian',
+        ko: '산업및시스템공학 석사',
+        en: 'M.S. in Industrial & Systems Engineering',
       },
       location: {
         ko: 'Daejeon, South Korea',
         en: 'Daejeon, South Korea',
       },
       summary: {
-        ko: '학점 4.15 / 4.3 (학과 석차 1/17, 전체 석차 33/832) · 모델 기반 강화학습(MBRL), 컨벡스 최적화 이론, 조합 최적화.',
-        en: 'GPA 4.15 / 4.3 (Ranked 1/17 in Dept, 33/832 Overall) · Researched Model-Based RL, convex optimization theory, and industrial combinatorial optimization.',
+        ko: '모델 기반 강화학습(MBRL), 컨벡스 최적화 이론, 조합 최적화 연구',
+        en: 'Researched Model-Based RL, convex optimization theory, and industrial combinatorial optimization.',
       },
       bullets: [
         {
