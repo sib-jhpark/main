@@ -11,11 +11,19 @@ export function HeroBento() {
       {/* 1. Top Identity Block (대표소개 — inspired by dabeenl.github.io) */}
       <section className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8 pb-8 border-b border-black/[0.06] dark:border-white/[0.08]">
         {profileData.photoUrl && (
-          <img
-            src={profileData.photoUrl}
-            alt={pick(profileData.name)}
-            className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl object-cover border border-black/[0.06] dark:border-white/[0.08] shadow-apple-card shrink-0"
-          />
+          <div
+            onContextMenu={(e) => e.preventDefault()}
+            style={{ WebkitTouchCallout: 'none' }}
+            className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-3xl overflow-hidden border border-black/[0.06] dark:border-white/[0.08] shadow-apple-card shrink-0 select-none"
+          >
+            <img
+              src={profileData.photoUrl}
+              alt={pick(profileData.name)}
+              draggable={false}
+              className="w-full h-full object-cover pointer-events-none select-none"
+            />
+            <div aria-hidden="true" className="absolute inset-0" />
+          </div>
         )}
 
         <div className="space-y-3 min-w-0">

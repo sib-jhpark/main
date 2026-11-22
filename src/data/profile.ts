@@ -6,6 +6,7 @@ import type { ProfileData } from '../types/profile';
  */
 export const profileData: ProfileData = {
   brand: 'Jaehyun Park',
+  photoUrl: './profile.jpg',
   name: {
     ko: '박재현',
     en: 'Jaehyun Park',
