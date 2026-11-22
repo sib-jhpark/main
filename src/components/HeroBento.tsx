@@ -104,7 +104,7 @@ export function HeroBento() {
 
             <div className="pt-3 border-t border-black/[0.04] dark:border-white/[0.06] text-[12px] text-[#86868B]">
               {language === 'ko'
-                ? '단순하고 오래가는 코드를 지향합니다.'
+                ? '이론과 현장을 잇는 정교한 알고리즘 설계'
                 : 'Preferring simple, durable software.'}
             </div>
           </div>

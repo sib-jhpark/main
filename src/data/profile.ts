@@ -26,11 +26,11 @@ export const profileData: ProfileData = {
     },
   },
   headline: {
-    ko: '강화학습과 수리 최적화로\n현실의 로봇과 시스템을 제어합니다.',
+    ko: '강화학습과 수리 최적화 기반\n로봇 · 물류 시스템 제어',
     en: 'Bridging Model-Based RL &\nMathematical Optimization to Real Robots.',
   },
   bio: {
-    ko: 'LG CNS에서 물류·산업용 로봇을 제어하는 최적화 알고리즘을 설계하고 개발하고 있습니다. KAIST 산업및시스템공학과 석사 과정에서 모델 기반 강화학습(MBRL)과 컨벡스 최적화를 연구했으며, 이론적 아이디어를 실제 산업 현장과 시뮬레이터에 안착시키는 데 집중합니다.',
+    ko: 'LG CNS 물류·산업용 로봇 제어 최적화 알고리즘 설계 및 개발. KAIST 산업및시스템공학 석사 과정에서 모델 기반 강화학습(MBRL)·컨벡스 최적화 연구 수행, 이론적 방법론의 산업 현장 및 시뮬레이터 적용에 집중.',
     en: 'Designing and building optimization algorithms for logistics and industrial robot fleets at LG CNS. Trained in Model-Based Reinforcement Learning (MBRL) and convex optimization at KAIST, focused on translating theoretical advances into reliable industrial control systems.',
   },
   currentFocus: [
@@ -86,7 +86,7 @@ export const profileData: ProfileData = {
       year: '2026',
       featured: true,
       summary: {
-        ko: '중앙 서버의 계산 병목 없이 대규모 이동 로봇 군집(Fleet)이 동적 물류·창고 환경에서 데드락 없이 경로를 협응하도록 설계한 분산형 MAPF 시스템입니다.',
+        ko: '중앙 서버 계산 병목 없이 대규모 이동 로봇 군집(Fleet)이 동적 물류·창고 환경에서 데드락 없이 경로를 협응하는 분산형 MAPF 시스템',
         en: 'A distributed multi-agent path finding framework that eliminates central bottlenecks so large robot fleets coordinate fluidly in dynamic warehouse environments.',
       },
       impact: {
@@ -99,11 +99,11 @@ export const profileData: ProfileData = {
       },
       tech: ['Model-Based RL', 'MAPF', 'Multi-Agent RL', 'Python', 'React', 'TypeScript'],
       problem: {
-        ko: '중앙 집중형 경로 탐색 서버는 로봇 대수가 늘어날수록 계산 복잡도가 급증하며, 동적 장애물과 교착 상태(Deadlock)에 실시간으로 대응하기 어렵습니다.',
+        ko: '중앙 집중형 경로 탐색 서버의 로봇 대수 증가에 따른 계산 복잡도 급증 및 동적 장애물·교착(Deadlock) 실시간 대응 한계',
         en: 'Centralized pathfinding servers hit severe computational bottlenecks as fleet size grows, struggling to resolve dynamic congestion and deadlocks in real time.',
       },
       solution: {
-        ko: '강화학습 기반 로컬 인터랙션 정책으로 각 로봇이 주변 에이전트와 자율적으로 경로를 조율하도록 설계하고, 시뮬레이션 환경에서 물리적 제약 조건과 실시간 성능을 검증합니다.',
+        ko: '강화학습 기반 로컬 인터랙션 정책을 통한 에이전트 간 자율 경로 조율 설계 및 시뮬레이션 기반 물리 제약·실시간 성능 검증',
         en: 'Introduced RL-based local interaction policies enabling robots to negotiate paths autonomously, validated in simulation under strict physical and real-time constraints.',
       },
       highlights: [
@@ -134,7 +134,7 @@ export const profileData: ProfileData = {
       year: '2026',
       featured: true,
       summary: {
-        ko: '종목별 Normalized OEPS, 성장률, 할인율로 내재가치를 산출하고 ROE·부채비율·주주이익 기반 펀더멘털 필터링을 거쳐 Direct Indexing 개인 ETF를 구축하는 서비스입니다.',
+        ko: '종목별 Normalized OEPS·성장률·할인율 기반 내재가치 산출 및 ROE·부채비율·주주이익 펀더멘털 필터링을 통한 Direct Indexing 개인 ETF 구축',
         en: 'A quantitative value-investing platform computing intrinsic value from Normalized OEPS, growth, and discount rates to construct a Direct Indexing personal ETF.',
       },
       impact: {
@@ -147,11 +147,11 @@ export const profileData: ProfileData = {
       },
       tech: ['React', 'TypeScript', 'Tailwind CSS', 'FastAPI', 'Quantitative Finance', 'Recharts'],
       problem: {
-        ko: '기업의 본질적 가치(소유주 이익 기반 내재가치)와 다년간 펀더멘털 건전성을 일관된 기준으로 비교하고 개인 포트폴리오에 반영하는 과정이 번거롭습니다.',
+        ko: '소유주 이익 기반 내재가치와 다년간 펀더멘털 건전성의 일관된 비교 및 개인 포트폴리오 반영 과정의 높은 수작업 비용',
         en: 'Consistently evaluating owner earnings, multi-year fundamentals, and margin of safety across stocks to construct a personal portfolio is slow and error-prone.',
       },
       solution: {
-        ko: 'Normalized OEPS·성장률·할인율 기반 내재가치 모델과 ROE·부채비율 펀더멘털 필터를 자동화하고, 선별된 우량 종목을 Direct Indexing 방식의 개인 ETF로 구성했습니다.',
+        ko: 'Normalized OEPS·성장률·할인율 내재가치 모델 및 ROE·부채비율 펀더멘털 필터 자동화, 선별 우량주 기반 Direct Indexing 개인 ETF 구성',
         en: 'Automated Normalized OEPS valuation and fundamental screening (ROE, debt ratio, owner earnings), feeding qualified picks into a Direct Indexing personal ETF.',
       },
       highlights: [
@@ -181,7 +181,7 @@ export const profileData: ProfileData = {
       status: 'wip',
       year: '2026',
       summary: {
-        ko: '인간이 물체를 잡거나 수건을 접는 등의 복합 조작 동작을 Two-State 모델로 수학적 추상화하고, 모델 기반 강화학습(MBRL)을 적용해 인간 수준의 고속 작업을 탐색하는 연구입니다.',
+        ko: '파지·수건 접기 등 복합 조작 동작의 Two-State 수학적 추상화 및 모델 기반 강화학습(MBRL) 기반 고속 휴머노이드 제어 연구',
         en: 'Researching human-speed manipulation (grasping, towel folding) by mathematically abstracting contact states and actions into a Two-State Model-Based RL formulation.',
       },
       impact: {
@@ -194,11 +194,11 @@ export const profileData: ProfileData = {
       },
       tech: ['Model-Based RL', 'MuJoCo', 'Isaac Sim', 'Python', 'Optimal Control'],
       problem: {
-        ko: '휴머노이드의 고속·변형체 조작(수건 접기 등)은 상태 공간이 방대해 기존 모델 프리 강화학습으로는 샘플 효율과 동작 속도를 확보하기 어렵습니다.',
+        ko: '휴머노이드 고속·변형체 조작의 방대한 상태 공간으로 인한 모델 프리 강화학습의 낮은 샘플 효율 및 속도 한계',
         en: 'High-speed dexterous and deformable-object manipulation in humanoids suffers from huge state spaces and poor sample efficiency under model-free RL.',
       },
       solution: {
-        ko: '작업 핵심 위상을 Two-State로 추상화한 동역학 모델을 학습해 계획(Planning)과 제어 속도를 높이는 Two-State MBRL 프레임워크를 설계합니다.',
+        ko: '작업 핵심 위상의 Two-State 동역학 모델 추상화 및 학습을 통해 계획(Planning)·제어 속도를 높이는 Two-State MBRL 프레임워크 설계',
         en: 'Formulated a Two-State MBRL framework abstracting manipulation phases and actions mathematically to accelerate planning and policy learning.',
       },
       highlights: [
@@ -223,7 +223,7 @@ export const profileData: ProfileData = {
       status: 'live',
       year: '2026',
       summary: {
-        ko: 'LG CNS 이기종 로봇 플랫폼(피지컬 웍스 바톤, PWB)의 Contextual Bandit 자원 할당, 적응형 배터리 최적화, NVIDIA Omniverse Kit · Isaac Sim 기반 3D 운영 시뮬레이터 MVP를 구축했습니다.',
+        ko: 'LG CNS 이기종 로봇 플랫폼(피지컬 웍스 바톤, PWB) Contextual Bandit 자원 할당, 적응형 배터리 최적화 및 NVIDIA Omniverse Kit·Isaac Sim 3D 운영 시뮬레이터 MVP 구축',
         en: 'Engineered Contextual Bandit task allocation, adaptive battery optimization, and NVIDIA Omniverse Kit / Isaac Sim 3D operational emulator MVP for LG CNS PWB.',
       },
       impact: {
@@ -236,11 +236,11 @@ export const profileData: ProfileData = {
       },
       tech: ['Contextual Bandit', 'NVIDIA Omniverse', 'Isaac Sim', 'cuOpt', 'WebRTC', 'Python'],
       problem: {
-        ko: '이기종 로봇이 혼재된 실제 물류 현장에 최적화 알고리즘을 배포하기 전, 자원 할당·경로·배터리 전략을 안전하고 정밀하게 검증할 환경이 필요했습니다.',
+        ko: '이기종 로봇 혼재 물류 현장 배포 전 자원 할당·경로·배터리 전략의 안전한 사전 정밀 검증 환경 부재',
         en: 'Deploying allocation, routing, and battery algorithms to heterogeneous robot fleets required a high-fidelity simulation environment prior to live floor rollout.',
       },
       solution: {
-        ko: '비용 함수 기반 Warm-Start Contextual Bandit과 3가지 운영 모드 배터리 로직을 설계하고, NVIDIA Omniverse Kit + WebRTC 3D 뷰 및 Isaac Sim 초정밀 운영 시뮬레이터 MVP를 구현했습니다.',
+        ko: '비용 함수 기반 Warm-Start Contextual Bandit 및 3모드 배터리 로직 설계, NVIDIA Omniverse Kit·WebRTC 3D 뷰 및 Isaac Sim 초정밀 운영 시뮬레이터 MVP 구현',
         en: 'Designed cost-function warm-started Contextual Bandits and 3-mode adaptive battery control, paired with an Omniverse Kit WebRTC 3D viewer and Isaac Sim emulator MVP.',
       },
       highlights: [
@@ -277,7 +277,7 @@ export const profileData: ProfileData = {
         en: 'Seoul, South Korea',
       },
       summary: {
-        ko: '이기종 로봇 군집의 자원 할당·경로 탐색·배터리 최적화 알고리즘과 NVIDIA Omniverse/Isaac Sim 기반 초정밀 운영 시뮬레이터를 설계·구현하고 있습니다.',
+        ko: '이기종 로봇 군집 자원 할당·경로 탐색·배터리 최적화 알고리즘 및 NVIDIA Omniverse/Isaac Sim 기반 초정밀 운영 시뮬레이터 설계·구현',
         en: 'Designing fleet allocation, routing, and battery optimization algorithms alongside NVIDIA Omniverse/Isaac Sim high-fidelity operational emulators.',
       },
       bullets: [
@@ -550,7 +550,7 @@ export const profileData: ProfileData = {
       en: 'Open to Mathematical Optimization, RL & Physical AI Collaborations.',
     },
     description: {
-      ko: '물류·로봇 제어 최적화, 모델 기반 강화학습(MBRL), Omniverse/Isaac Sim 시뮬레이션 또는 사이드 프로젝트 관련 논의는 언제든 환영합니다.',
+      ko: '물류·로봇 제어 최적화, 모델 기반 강화학습(MBRL), Omniverse/Isaac Sim 시뮬레이션 및 관련 연구·프로젝트 협업 문의',
       en: 'Reach out anytime to discuss robot fleet optimization, Model-Based RL, Omniverse/Isaac Sim simulation, or research collaborations.',
     },
     links: [
