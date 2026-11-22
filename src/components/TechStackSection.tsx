@@ -12,18 +12,18 @@ export function TechStackSection() {
             Research Interests
           </p>
           <h2 className="text-2xl sm:text-[28px] font-bold tracking-[-0.02em] text-[#1D1D1F] dark:text-[#F5F5F7]">
-            {language === 'ko' ? '연구 및 전문 분야' : 'Research Interests'}
+            {language === 'ko' ? '연구 및 관심 분야' : 'Research Interests'}
           </h2>
         </div>
 
         <div className="flex items-center gap-3 text-xs text-[#86868B]">
           <span className="inline-flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full bg-[#0071E3] dark:bg-[#2997FF]" />
-            <span>{language === 'ko' ? '주력 기술' : 'Core'}</span>
+            <span>{language === 'ko' ? '전문 분야' : 'Core'}</span>
           </span>
           <span className="inline-flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full bg-[#D2D2D7] dark:bg-[#48484A]" />
-            <span>{language === 'ko' ? '실무 활용' : 'Familiar'}</span>
+            <span>{language === 'ko' ? '활용 분야' : 'Familiar'}</span>
           </span>
         </div>
       </div>
