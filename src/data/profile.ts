@@ -501,6 +501,17 @@ export const profileData: ProfileData = {
         ko: '단독 1저자 · 포스터 발표 (International Conference on Artificial Intelligence and Statistics)',
         en: 'Sole First Author · Poster Presentation (AISTATS 2025)',
       },
+      url: 'https://proceedings.mlr.press/v258/park25a.html',
+      links: [
+        {
+          label: 'Paper (PMLR)',
+          url: 'https://proceedings.mlr.press/v258/park25a.html',
+        },
+        {
+          label: 'Poster',
+          url: 'https://virtual.aistats.org/media/PosterPDFs/AISTATS%202025/9497.png?t=1746000705.1348274',
+        },
+      ],
     },
     {
       id: 'informs-2024',

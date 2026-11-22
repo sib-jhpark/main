@@ -64,6 +64,11 @@ export interface TechCategory {
   skills: TechSkill[];
 }
 
+export interface PublicationLink {
+  label: string;
+  url: string;
+}
+
 export interface PublicationItem {
   id: string;
   date: string;
@@ -71,6 +76,7 @@ export interface PublicationItem {
   title: string;
   note: LocalizedText;
   url?: string;
+  links?: PublicationLink[];
 }
 
 export interface HonorItem {

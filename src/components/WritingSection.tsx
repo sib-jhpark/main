@@ -25,49 +25,61 @@ export function WritingSection() {
           </div>
 
           <div className="divide-y divide-black/[0.04] dark:divide-white/[0.06]">
-            {profileData.publications.map((pub) => {
-              const content = (
-                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 sm:gap-6">
-                  <div className="space-y-1.5 min-w-0">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[#E8F2FD] dark:bg-[#0071E3]/20 text-[#0071E3] dark:text-[#2997FF]">
-                        Conference
-                      </span>
-                      <span className="text-xs font-semibold text-[#1D1D1F] dark:text-[#F5F5F7]">
-                        {pub.venue}
-                      </span>
-                      <span className="text-xs text-[#D2D2D7] dark:text-[#3A3A3C]">·</span>
-                      <time className="text-xs font-mono tabular-nums text-[#86868B]">
-                        {pub.date}
-                      </time>
-                    </div>
+            {profileData.publications.map((pub) => (
+              <div key={pub.id} className="py-5 first:pt-0 last:pb-0">
+                <div className="space-y-2 min-w-0">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[#E8F2FD] dark:bg-[#0071E3]/20 text-[#0071E3] dark:text-[#2997FF]">
+                      Conference
+                    </span>
+                    <span className="text-xs font-semibold text-[#1D1D1F] dark:text-[#F5F5F7]">
+                      {pub.venue}
+                    </span>
+                    <span className="text-xs text-[#D2D2D7] dark:text-[#3A3A3C]">·</span>
+                    <time className="text-xs font-mono tabular-nums text-[#86868B]">
+                      {pub.date}
+                    </time>
+                  </div>
+
+                  {pub.url ? (
+                    <a
+                      href={pub.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-start gap-1.5 group"
+                    >
+                      <h3 className="text-[15px] font-semibold leading-snug text-[#1D1D1F] dark:text-[#F5F5F7] group-hover:text-[#0071E3] dark:group-hover:text-[#2997FF] transition-colors">
+                        {pub.title}
+                      </h3>
+                      <ArrowUpRight className="w-4 h-4 text-[#A1A1A6] group-hover:text-[#0071E3] dark:group-hover:text-[#2997FF] shrink-0 mt-0.5 transition-colors" />
+                    </a>
+                  ) : (
                     <h3 className="text-[15px] font-semibold leading-snug text-[#1D1D1F] dark:text-[#F5F5F7]">
                       {pub.title}
                     </h3>
-                    <p className="text-xs text-[#86868B]">{pick(pub.note)}</p>
-                  </div>
-                  {pub.url && (
-                    <ArrowUpRight className="w-4 h-4 text-[#A1A1A6] shrink-0 mt-1" />
+                  )}
+
+                  <p className="text-xs text-[#86868B]">{pick(pub.note)}</p>
+
+                  {pub.links && pub.links.length > 0 && (
+                    <div className="flex flex-wrap items-center gap-2 pt-1">
+                      {pub.links.map((link) => (
+                        <a
+                          key={link.label}
+                          href={link.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="bento-pill inline-flex items-center gap-1 px-3 py-1 text-[11.5px] font-semibold bg-[#F5F5F7] dark:bg-[#2C2C2E] hover:bg-[#EBEBED] dark:hover:bg-[#3A3A3C] text-[#1D1D1F] dark:text-[#F5F5F7]"
+                        >
+                          <span>{link.label}</span>
+                          <ArrowUpRight className="w-3 h-3 text-[#86868B]" />
+                        </a>
+                      ))}
+                    </div>
                   )}
                 </div>
-              );
-
-              return pub.url ? (
-                <a
-                  key={pub.id}
-                  href={pub.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="block py-4 first:pt-0 last:pb-0 hover:opacity-80 transition-opacity"
-                >
-                  {content}
-                </a>
-              ) : (
-                <div key={pub.id} className="py-4 first:pt-0 last:pb-0">
-                  {content}
-                </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
 
