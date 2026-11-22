@@ -89,7 +89,7 @@ export function HeroBento() {
         </div>
 
         <div className="bento-card p-6 sm:p-8">
-          <p className="text-[14.5px] sm:text-[15.5px] leading-[1.8] text-[#1D1D1F]/90 dark:text-[#F5F5F7]/90">
+          <p className="text-[14.5px] sm:text-[15.5px] leading-[1.85] text-[#1D1D1F]/90 dark:text-[#F5F5F7]/90 whitespace-pre-line">
             {renderTextWithLinks(pick(profileData.bio))}
           </p>
         </div>
