@@ -81,21 +81,12 @@ export function ExperienceSection() {
           Background
         </p>
         <h2 className="text-2xl sm:text-[28px] font-bold tracking-[-0.02em] text-[#1D1D1F] dark:text-[#F5F5F7]">
-          {language === 'ko' ? '경력 및 학력' : 'Experience & Education'}
+          {language === 'ko' ? '학력 및 경력' : 'Education & Experience'}
         </h2>
       </div>
 
       <div className="space-y-5">
-        {/* Work Experience Bento Card */}
-        <div className="bento-card p-6 sm:p-8">
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#86868B] mb-6">
-            <Briefcase className="w-3.5 h-3.5 text-[#0071E3] dark:text-[#2997FF]" />
-            <span>{language === 'ko' ? '경력' : 'Work Experience'}</span>
-          </div>
-          <TimelineList items={workItems} />
-        </div>
-
-        {/* Education Bento Card */}
+        {/* Education Bento Card (First) */}
         {eduItems.length > 0 && (
           <div className="bento-card p-6 sm:p-8">
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#86868B] mb-6">
@@ -105,6 +96,15 @@ export function ExperienceSection() {
             <TimelineList items={eduItems} />
           </div>
         )}
+
+        {/* Work Experience Bento Card (Second) */}
+        <div className="bento-card p-6 sm:p-8">
+          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#86868B] mb-6">
+            <Briefcase className="w-3.5 h-3.5 text-[#0071E3] dark:text-[#2997FF]" />
+            <span>{language === 'ko' ? '경력' : 'Work Experience'}</span>
+          </div>
+          <TimelineList items={workItems} />
+        </div>
       </div>
     </section>
   );

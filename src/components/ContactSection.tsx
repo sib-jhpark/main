@@ -80,7 +80,11 @@ export function ContactSection() {
         </div>
 
         {/* Social Link Bento Row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-6 border-t border-black/[0.04] dark:border-white/[0.06]">
+        <div
+          className={`grid grid-cols-1 sm:grid-cols-2 ${
+            profileData.contact.links.length > 2 ? 'lg:grid-cols-4' : ''
+          } gap-3 pt-6 border-t border-black/[0.04] dark:border-white/[0.06]`}
+        >
           {profileData.contact.links.map((link) => {
             const isExternal = link.url.startsWith('http');
             return (

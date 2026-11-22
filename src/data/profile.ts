@@ -5,7 +5,7 @@ import type { ProfileData } from '../types/profile';
  * 이 파일의 내용만 수정하면 6개 섹션(한/영 전환, 프로젝트 필터/모달 포함)에 즉시 반영됩니다.
  */
 export const profileData: ProfileData = {
-  brand: 'jhpark',
+  brand: 'Jaehyun Park',
   name: {
     ko: '박재현',
     en: 'Jaehyun Park',
@@ -303,38 +303,34 @@ export const profileData: ProfileData = {
     {
       id: 'lg-cns-agv',
       type: 'work',
-      period: '2025.07 — 2026',
+      period: '2025.09 — 2026.03',
       organization: {
-        ko: '(주)LG CNS · 선임',
-        en: 'LG CNS · Senior Associate',
+        ko: '(주)LG CNS · 사원',
+        en: 'LG CNS · Associate',
       },
       role: {
-        ko: '스마트 물류 센터 AGV 구축 · 제어 · 안정화',
-        en: 'Smart Logistics Center AGV Deployment & Control Optimization',
+        ko: '스마트 물류 센터 AGV 구축 · FAT 및 현장 안정화',
+        en: 'Smart Logistics Center AGV Deployment · FAT & Field Stabilization',
       },
       location: {
         ko: 'South Korea',
         en: 'South Korea',
       },
       summary: {
-        ko: '대규모 스마트 물류 센터에 AGV 80대를 도입하고 RCS(로봇 제어 서버) 안정화 및 경로·맵 최적화를 통해 물류 처리량을 끌어올렸습니다.',
-        en: 'Deployed 80 AGVs in a smart logistics center, stabilizing the Robot Control Server (RCS) and tuning routing/map topology for higher throughput.',
+        ko: '대규모 AGV(80대) 도입 과정의 FAT 참여, RCS 안정화 및 현장 이슈 대응',
+        en: 'Participated in FAT, RCS stabilization, and on-site issue resolution for an 80-AGV deployment.',
       },
       bullets: [
         {
-          ko: 'AGV 80대 현장 도입 및 RCS(로봇 제어 서버) 안정화, 데드락 방지로 물류 CAPA 약 10% 개선',
-          en: 'Deployed 80 AGVs, stabilized RCS, and eliminated deadlocks — improving logistics CAPA by ~10%',
+          ko: 'FAT(공장수락시험) 참여: AGV 80대 도입 전 주행·제어 시나리오 검증 및 RCS 연동 안정성 점검',
+          en: 'FAT (Factory Acceptance Test): Validated control scenarios and RCS integration prior to 80-AGV rollout',
         },
         {
-          ko: 'A* 경로 탐색 알고리즘 하이퍼파라미터 튜닝으로 AGV 불필요 회전 및 정지 최소화',
-          en: 'Tuned A* pathfinding hyperparameters to minimize unnecessary AGV turns and stops',
-        },
-        {
-          ko: '격자 맵 엣지(Edge) 튜닝을 통한 교착 해소·생산성 개선 및 네트워크/동작 반응속도 최적화',
-          en: 'Optimized grid map edges to reduce congestion and improved network/actuation responsiveness',
+          ko: '현장 이슈 대응: 운영 중 데드락·교착 이슈 해결 및 A*·맵 엣지 튜닝을 통한 물류 CAPA 약 10% 개선',
+          en: 'On-site Issue Resolution: Resolved live deadlocks and map congestion via A*/edge tuning, improving CAPA by ~10%',
         },
       ],
-      tags: ['AGV (80 units)', 'RCS', 'A* Tuning', 'Deadlock Prevention', 'CAPA +10%'],
+      tags: ['AGV (80 units)', 'FAT', 'RCS', 'On-site Stabilization'],
     },
     {
       id: 'edu-kaist',
@@ -353,7 +349,7 @@ export const profileData: ProfileData = {
         en: 'Daejeon, South Korea',
       },
       summary: {
-        ko: '학점 4.15 / 4.3 (학과 석차 1/17, 전체 석차 33/832) · 모델 기반 강화학습(MBRL), 컨벡스 최적화 이론, 조합 최적화 산학 문제를 연구했습니다.',
+        ko: '학점 4.15 / 4.3 (학과 석차 1/17, 전체 석차 33/832) · 모델 기반 강화학습(MBRL), 컨벡스 최적화 이론, 조합 최적화.',
         en: 'GPA 4.15 / 4.3 (Ranked 1/17 in Dept, 33/832 Overall) · Researched Model-Based RL, convex optimization theory, and industrial combinatorial optimization.',
       },
       bullets: [
@@ -388,20 +384,20 @@ export const profileData: ProfileData = {
         en: 'Seoul, South Korea',
       },
       summary: {
-        ko: '학점 4.17 / 4.5 · 해석학, OR, 최적화 응용, 계량경제학, 베이즈통계, 실험계획법 등 수리·통계 기반을 다졌습니다.',
+        ko: '학점 4.17 / 4.5 · 해석학, OR, 최적화 응용, 계량경제학, 베이즈통계, 실험계획법',
         en: 'GPA 4.17 / 4.5 · Built mathematical foundations across Analysis, Operations Research, Econometrics, Bayesian Statistics, and Experimental Design.',
       },
       bullets: [
         {
-          ko: '양자 시스템 최적화 연구실 학부연구생 — 양자 최적화 연구 및 ZX-calculus 자료 조사',
-          en: 'Undergraduate Researcher, Quantum Systems Optimization Lab — Quantum optimization & ZX-calculus study',
+          ko: '양자 시스템 최적화 연구실(최인찬 교수) 학부연구생 — 양자 최적화 연구 및 ZX-calculus 자료 조사',
+          en: 'Undergraduate Researcher, Quantum Systems Optimization Lab (Prof. Inchan Choi) — Quantum optimization & ZX-calculus study',
         },
       ],
     },
     {
       id: 'edu-seoultech',
       type: 'education',
-      period: '2016 — 2020',
+      period: '2016 — 2020(중퇴)',
       organization: {
         ko: '서울과학기술대학교 (SeoulTech)',
         en: 'Seoul National University of Science and Technology (SeoulTech)',
@@ -426,13 +422,13 @@ export const profileData: ProfileData = {
       id: 'rl',
       title: { ko: 'Reinforcement Learning', en: 'Reinforcement Learning' },
       description: {
-        ko: '모델 기반 강화학습 및 멀티에이전트 의사결정',
-        en: 'Model-based RL and multi-agent decision making',
+        ko: '모델 기반 강화학습',
+        en: 'Model-based RL',
       },
       skills: [
         { name: 'Model-Based RL (MBRL)', core: true },
         { name: 'Contextual Bandits', core: true },
-        { name: 'Multi-Agent RL (MARL)', core: true },
+        // { name: 'Multi-Agent RL (MARL)', core: true },
         { name: 'MNL Function Approx.' },
         { name: 'Policy & Reward Design' },
       ],
@@ -441,7 +437,7 @@ export const profileData: ProfileData = {
       id: 'optimization',
       title: { ko: 'Mathematical Optimization', en: 'Mathematical Optimization' },
       description: {
-        ko: '수리 계획법 기반 물류·로봇 제어 최적화',
+        ko: '수리 최적화 기반 물류·로봇 제어 최적화 설계',
         en: 'Mathematical programming for logistics & robot control',
       },
       skills: [
@@ -454,7 +450,7 @@ export const profileData: ProfileData = {
     },
     {
       id: 'simulation',
-      title: { ko: 'Robotics & Simulation', en: 'Robotics & Simulation' },
+      title: { ko: 'Simulation', en: 'Simulation' },
       description: {
         ko: '초정밀 물리 시뮬레이터 및 디지털 트윈',
         en: 'High-fidelity physics simulation & digital twins',
@@ -463,25 +459,25 @@ export const profileData: ProfileData = {
         { name: 'NVIDIA Omniverse', core: true },
         { name: 'NVIDIA Isaac Sim', core: true },
         { name: 'MuJoCo', core: true },
-        { name: 'Isaac Mission Control' },
+        // { name: 'Isaac Mission Control' },
         { name: 'NVIDIA cuOpt' },
-        { name: 'WebRTC 3D' },
+        // { name: 'WebRTC 3D' },
       ],
     },
     {
       id: 'engineering',
       title: { ko: 'Engineering & Product', en: 'Engineering & Product' },
       description: {
-        ko: '알고리즘 서비스화 및 풀스택 프로토타이핑',
-        en: 'Productionizing algorithms & full-stack prototyping',
+        ko: '',
+        en: '',
       },
       skills: [
         { name: 'Python', core: true },
-        { name: 'TypeScript', core: true },
-        { name: 'React' },
-        { name: 'FastAPI' },
-        { name: 'Docker' },
-        { name: 'Quantitative Finance' },
+        // { name: 'TypeScript', core: true },
+        { name: 'JAVA' },
+        // { name: 'FastAPI' },
+        // { name: 'Docker' },
+        // { name: 'Quantitative Finance' },
       ],
     },
   ],
@@ -513,7 +509,7 @@ export const profileData: ProfileData = {
       date: '2025.02',
       title: {
         ko: 'KAIST 산업및시스템공학과 석사 수석 졸업',
-        en: 'KAIST M.S. Valedictorian, Industrial & Systems Engineering',
+        en: 'KAIST M.S., Industrial & Systems Engineering',
       },
       detail: {
         ko: '학점 4.15 / 4.3 · 학과 석차 1/17 · KAIST 전체 석차 33/832',
@@ -550,8 +546,8 @@ export const profileData: ProfileData = {
   contact: {
     email: 'jhpark@alumni.kaist.ac.kr',
     heading: {
-      ko: '최적화 · 강화학습 · 로보틱스 협업을 환영합니다.',
-      en: 'Open to Optimization, RL & Robotics Collaborations.',
+      ko: '수리 최적화 · 강화학습 · 피지컬AI',
+      en: 'Open to Mathematical Optimization, RL & Physical AI Collaborations.',
     },
     description: {
       ko: '물류·로봇 제어 최적화, 모델 기반 강화학습(MBRL), Omniverse/Isaac Sim 시뮬레이션 또는 사이드 프로젝트 관련 논의는 언제든 환영합니다.',
@@ -564,18 +560,18 @@ export const profileData: ProfileData = {
         handle: '@sib-proejct',
         url: 'https://github.com/sib-proejct',
       },
-      {
-        id: 'blog',
-        label: { ko: 'MAPF-RL Repo', en: 'MAPF-RL Repo' },
-        handle: 'mapf-rl-fe',
-        url: 'https://github.com/sib-proejct/mapf-rl-fe',
-      },
-      {
-        id: 'resume',
-        label: { ko: 'SOGS Repo', en: 'SOGS Repo' },
-        handle: 'search-only-good-stock-fe',
-        url: 'https://github.com/sib-proejct/search-only-good-stock-fe',
-      },
+      // {
+      //   id: 'blog',
+      //   label: { ko: 'MAPF-RL Repo', en: 'MAPF-RL Repo' },
+      //   handle: 'mapf-rl-fe',
+      //   url: 'https://github.com/sib-proejct/mapf-rl-fe',
+      // },
+      // {
+      //   id: 'resume',
+      //   label: { ko: 'SOGS Repo', en: 'SOGS Repo' },
+      //   handle: 'search-only-good-stock-fe',
+      //   url: 'https://github.com/sib-proejct/search-only-good-stock-fe',
+      // },
       {
         id: 'linkedin',
         label: { ko: 'LinkedIn', en: 'LinkedIn' },

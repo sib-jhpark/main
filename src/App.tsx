@@ -17,8 +17,8 @@ function ProfileLayout() {
         <HeroBento />
         <TechStackSection />
         <WritingSection />
-        <ProjectsSection />
         <ExperienceSection />
+        <ProjectsSection />
         <ContactSection />
       </main>
 
