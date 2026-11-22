@@ -13,7 +13,7 @@ export interface NavItem {
  * 추후 새로운 상위 페이지/탭을 추가할 때 이 배열에 항목을 추가하면 됩니다.
  */
 export const NAV_ITEMS: NavItem[] = [
-  { id: 'profile', href: '#about', label: { ko: '프로필', en: 'Profile' } },
+  { id: 'home', href: '#about', label: { ko: '홈', en: 'Home' } },
 ];
 
 interface TopNavBarProps {

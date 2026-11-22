@@ -9,10 +9,10 @@ export function TechStackSection() {
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-6">
         <div>
           <p className="text-xs font-semibold uppercase tracking-wider text-[#0071E3] dark:text-[#2997FF] mb-1.5">
-            Capabilities
+            Research Interests
           </p>
           <h2 className="text-2xl sm:text-[28px] font-bold tracking-[-0.02em] text-[#1D1D1F] dark:text-[#F5F5F7]">
-            {language === 'ko' ? '기술 스택' : 'Tech Stack'}
+            {language === 'ko' ? '연구 및 전문 분야' : 'Research Interests'}
           </h2>
         </div>
 

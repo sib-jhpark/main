@@ -9,10 +9,10 @@ export function WritingSection() {
     <section id="writing" className="scroll-mt-20">
       <div className="mb-6">
         <p className="text-xs font-semibold uppercase tracking-wider text-[#0071E3] dark:text-[#2997FF] mb-1.5">
-          Publications, Honors &amp; Credentials
+          Publications &amp; Honors
         </p>
         <h2 className="text-2xl sm:text-[28px] font-bold tracking-[-0.02em] text-[#1D1D1F] dark:text-[#F5F5F7]">
-          {language === 'ko' ? '논문 · 수상 · 자격증' : 'Research, Honors & Certifications'}
+          {language === 'ko' ? '논문 · 학회 · 수상' : 'Publications & Honors'}
         </h2>
       </div>
 
@@ -31,8 +31,12 @@ export function WritingSection() {
                   <div className="space-y-1.5 min-w-0">
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[#E8F2FD] dark:bg-[#0071E3]/20 text-[#0071E3] dark:text-[#2997FF]">
+                        Conference
+                      </span>
+                      <span className="text-xs font-semibold text-[#1D1D1F] dark:text-[#F5F5F7]">
                         {pub.venue}
                       </span>
+                      <span className="text-xs text-[#D2D2D7] dark:text-[#3A3A3C]">·</span>
                       <time className="text-xs font-mono tabular-nums text-[#86868B]">
                         {pub.date}
                       </time>

@@ -78,7 +78,7 @@ export function ExperienceSection() {
     <section id="experience" className="scroll-mt-20">
       <div className="mb-6">
         <p className="text-xs font-semibold uppercase tracking-wider text-[#0071E3] dark:text-[#2997FF] mb-1.5">
-          Timeline
+          Background
         </p>
         <h2 className="text-2xl sm:text-[28px] font-bold tracking-[-0.02em] text-[#1D1D1F] dark:text-[#F5F5F7]">
           {language === 'ko' ? '경력 및 학력' : 'Experience & Education'}

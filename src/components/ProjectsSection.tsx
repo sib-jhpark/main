@@ -58,10 +58,10 @@ export function ProjectsSection() {
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
         <div>
           <p className="text-xs font-semibold uppercase tracking-wider text-[#0071E3] dark:text-[#2997FF] mb-1.5">
-            {language === 'ko' ? 'Selected Works' : 'Selected Works'}
+            Research &amp; Engineering
           </p>
           <h2 className="text-2xl sm:text-[28px] font-bold tracking-[-0.02em] text-[#1D1D1F] dark:text-[#F5F5F7]">
-            {language === 'ko' ? '주요 프로젝트' : 'Projects'}
+            {language === 'ko' ? '연구 및 프로젝트' : 'Projects'}
           </h2>
         </div>
 
