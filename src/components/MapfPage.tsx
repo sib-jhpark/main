@@ -46,11 +46,6 @@ export function MapfPage() {
               <span>Frontend Repo (mapf-rl-fe)</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
-            <span className="text-xs text-[#86868B] px-2">
-              {language === 'ko'
-                ? '※ RL 상태/행동 공간 축소 및 전이 확률 모델링 세부 아이디어는 비공개'
-                : '※ RL state/action space reduction & transition modeling details remain private'}
-            </span>
           </div>
         </div>
 
