@@ -39,6 +39,21 @@ function ProfileLayout() {
     return () => window.removeEventListener('hashchange', onHashChange);
   }, []);
 
+  useEffect(() => {
+    const preventImageSave = (e: Event) => {
+      const target = e.target as HTMLElement | null;
+      if (target && target.tagName === 'IMG') {
+        e.preventDefault();
+      }
+    };
+    document.addEventListener('contextmenu', preventImageSave);
+    document.addEventListener('dragstart', preventImageSave);
+    return () => {
+      document.removeEventListener('contextmenu', preventImageSave);
+      document.removeEventListener('dragstart', preventImageSave);
+    };
+  }, []);
+
   const handleSelectTab = (tab: TopTabId) => {
     setActiveTab(tab);
     const nextHash = `#${tab}`;

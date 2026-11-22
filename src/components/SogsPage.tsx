@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ArrowUpRight, Calculator, Github, Layers, ShieldCheck } from 'lucide-react';
 import { useThemeLanguage } from '../context/ThemeLanguageContext';
 import type { LocalizedText } from '../types/profile';
+import { ProtectedImage } from './ProtectedImage';
 
 type ScreenId = 'screener' | 'detail' | 'valuation' | 'calculator' | 'guide' | 'community';
 
@@ -255,13 +256,13 @@ export function SogsPage() {
             </span>
           </div>
 
-          <div className="rounded-2xl overflow-hidden border border-black/[0.06] dark:border-white/[0.08] bg-[#F5F5F7] dark:bg-[#141416]">
-            <img
-              src={activeScreen.image}
-              alt={pick(activeScreen.title)}
-              className="w-full h-auto block"
-            />
-          </div>
+          <ProtectedImage
+            src={activeScreen.image}
+            alt={pick(activeScreen.title)}
+            watermarkVariant="tiled"
+            wrapperClassName="rounded-2xl border border-black/[0.06] dark:border-white/[0.08] bg-[#F5F5F7] dark:bg-[#141416]"
+            className="w-full h-auto block"
+          />
 
           <div className="flex flex-wrap gap-2">
             {activeScreen.highlights.map((item, idx) => (

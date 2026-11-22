@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowUpRight, CheckCircle2, Clock, Cpu, Github, Network, Play, Shield } from 'lucide-react';
 import { useThemeLanguage } from '../context/ThemeLanguageContext';
+import { ProtectedImage } from './ProtectedImage';
 
 export function MapfPage() {
   const { language } = useThemeLanguage();
@@ -124,13 +125,13 @@ export function MapfPage() {
                 Fixture 10Hz / Live WS
               </span>
             </div>
-            <div className="rounded-2xl overflow-hidden border border-black/[0.06] dark:border-white/[0.08] bg-[#F5F5F7] dark:bg-[#141416]">
-              <img
-                src="./assets/mapf/operations-fixture.png"
-                alt="MAPF-RL Warehouse Operations Dashboard"
-                className="w-full h-auto block"
-              />
-            </div>
+            <ProtectedImage
+              src="./assets/mapf/operations-fixture.png"
+              alt="MAPF-RL Warehouse Operations Dashboard"
+              watermarkVariant="tiled"
+              wrapperClassName="rounded-2xl border border-black/[0.06] dark:border-white/[0.08] bg-[#F5F5F7] dark:bg-[#141416]"
+              className="w-full h-auto block"
+            />
             <p className="text-xs text-[#86868B] leading-relaxed">
               {language === 'ko'
                 ? '창고 맵 캔버스, 로봇 함대 상태, 배터리·충전, 오더 큐/웨이브(최대 100건), 로컬 Live 로봇 프로비저닝 및 안전 제거를 실시간 시각화.'
@@ -188,7 +189,120 @@ export function MapfPage() {
         </div>
       </section>
 
-      {/* 3. 3-TIER SYSTEM ARCHITECTURE */}
+      {/* 3. PLANNED RL ARCHITECTURE: CNN POLICY & STATE ABSTRACTION */}
+      <section className="space-y-5">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wider text-[#0071E3] dark:text-[#2997FF] mb-1.5">
+            Planned RL Architecture
+          </p>
+          <h2 className="text-2xl sm:text-[28px] font-bold tracking-[-0.02em] text-[#1D1D1F] dark:text-[#F5F5F7]">
+            {language === 'ko'
+              ? 'CNN 로컬 정책 & State Abstraction 설계'
+              : 'CNN Local Policy & State Abstraction'}
+          </h2>
+          <p className="text-sm text-[#86868B] mt-1.5 max-w-[780px]">
+            {language === 'ko'
+              ? '전역 맵 크기나 로봇 대수가 늘어나도 입력 차원이 고정되도록 Ego 중심 국소 관측으로 상태를 추상화하고, 경량 CNN 정책이 5개 이산 행동(상·하·좌·우·정지)을 산출한 뒤 시뮬레이터 Safety Kernel을 통과시키는 분산 제어 구조.'
+              : 'Ego-centered state abstraction keeps input dimensionality invariant to warehouse scale and fleet size. A lightweight CNN outputs 5 discrete cardinal actions (Up / Down / Left / Right / Wait), gated by the simulator deterministic safety kernel.'}
+          </p>
+        </div>
+
+        <div className="bento-card p-6 sm:p-8 space-y-6">
+          {/* High-Level Concept Flow SVG */}
+          <div className="rounded-2xl border border-black/[0.06] dark:border-white/[0.08] bg-[#FBFBFD] dark:bg-[#141416] p-4 sm:p-5 overflow-x-auto">
+            <svg viewBox="0 0 960 150" className="w-full min-w-[700px] h-auto" role="img" aria-label="MAPF-RL CNN Policy Flow">
+              <defs>
+                <marker id="mapf-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 1 L 10 5 L 0 9 z" fill="#86868B" />
+                </marker>
+              </defs>
+
+              <rect x="8" y="24" width="188" height="96" rx="14" fill="#FFFFFF" stroke="#E5E7EB" strokeWidth="1.5" />
+              <text x="102" y="56" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1D1D1F">State Abstraction</text>
+              <text x="102" y="78" textAnchor="middle" fontSize="11" fill="#6B7280">Ego-Centered Local Grid</text>
+              <text x="102" y="96" textAnchor="middle" fontSize="11" fill="#6B7280">+ Goal &amp; Nearby Fleet</text>
+
+              <line x1="196" y1="72" x2="228" y2="72" stroke="#86868B" strokeWidth="1.8" markerEnd="url(#mapf-arrow)" />
+
+              <rect x="232" y="24" width="174" height="96" rx="14" fill="#E8F2FD" stroke="#0071E3" strokeWidth="1.6" />
+              <text x="319" y="58" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#0071E3">Lightweight CNN</text>
+              <text x="319" y="80" textAnchor="middle" fontSize="11" fill="#1D1D1F">Local Spatial Features</text>
+              <text x="319" y="98" textAnchor="middle" fontSize="10.5" fill="#4B5563">Onboard ONNX Inference</text>
+
+              <line x1="406" y1="72" x2="438" y2="72" stroke="#86868B" strokeWidth="1.8" markerEnd="url(#mapf-arrow)" />
+
+              <rect x="442" y="24" width="184" height="96" rx="14" fill="#FFFFFF" stroke="#E5E7EB" strokeWidth="1.5" />
+              <text x="534" y="54" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="#1D1D1F">5 Discrete Actions</text>
+              <text x="534" y="78" textAnchor="middle" fontSize="11.5" fontWeight="600" fill="#0071E3">↑ · ↓ · ← · → · WAIT</text>
+              <text x="534" y="98" textAnchor="middle" fontSize="10.5" fill="#6B7280">Cardinal Policy Logits</text>
+
+              <line x1="626" y1="72" x2="658" y2="72" stroke="#86868B" strokeWidth="1.8" markerEnd="url(#mapf-arrow)" />
+
+              <rect x="662" y="24" width="144" height="96" rx="14" fill="#EAF8EE" stroke="#34C759" strokeWidth="1.5" />
+              <text x="734" y="58" textAnchor="middle" fontSize="12" fontWeight="700" fill="#248A3D">Safety Kernel</text>
+              <text x="734" y="78" textAnchor="middle" fontSize="10.5" fill="#1D1D1F">Collision &amp; Route</text>
+              <text x="734" y="96" textAnchor="middle" fontSize="10.5" fill="#1D1D1F">Final Veto Gate</text>
+
+              <line x1="806" y1="72" x2="836" y2="72" stroke="#86868B" strokeWidth="1.8" markerEnd="url(#mapf-arrow)" />
+
+              <rect x="840" y="30" width="112" height="84" rx="14" fill="#1D1D1F" />
+              <text x="896" y="68" textAnchor="middle" fontSize="12" fontWeight="700" fill="#F5F5F7">Rust Motion</text>
+              <text x="896" y="88" textAnchor="middle" fontSize="10.5" fill="#9CA3AF">100 ms Tick</text>
+            </svg>
+          </div>
+
+          {/* 3 Compact Spec Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="p-4 rounded-2xl bg-[#F5F5F7]/80 dark:bg-[#2C2C2E]/60 space-y-1.5">
+              <div className="text-xs font-semibold text-[#0071E3] dark:text-[#2997FF]">
+                {language === 'ko' ? 'State Abstraction' : 'State Abstraction'}
+              </div>
+              <p className="text-xs leading-relaxed text-[#1D1D1F]/85 dark:text-[#F5F5F7]/85">
+                {language === 'ko'
+                  ? '전역 창고 상태 대신 로봇 중심 국소 점유·예약 격자, 상대 목표 벡터, 최근접 이웃 상태로 압축해 대규모 플릿에서도 동일한 입력 규격 유지.'
+                  : 'Compresses global warehouse state into an ego-centered local occupancy/reservation grid, relative goal vector, and nearest-neighbor features.'}
+              </p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-[#F5F5F7]/80 dark:bg-[#2C2C2E]/60 space-y-1.5">
+              <div className="text-xs font-semibold text-[#0071E3] dark:text-[#2997FF]">
+                {language === 'ko' ? 'Action Space (5종)' : 'Action Space (5 Actions)'}
+              </div>
+              <div className="flex flex-wrap gap-1.5 pt-0.5">
+                {(language === 'ko'
+                  ? ['상 (NORTH)', '하 (SOUTH)', '좌 (WEST)', '우 (EAST)', '정지 (WAIT)']
+                  : ['NORTH', 'SOUTH', 'WEST', 'EAST', 'WAIT']
+                ).map((act) => (
+                  <span
+                    key={act}
+                    className="px-2 py-0.5 rounded-full text-[11px] font-mono font-medium bg-white dark:bg-[#1C1C1E] text-[#1D1D1F] dark:text-[#F5F5F7] border border-black/[0.06] dark:border-white/[0.08]"
+                  >
+                    {act}
+                  </span>
+                ))}
+              </div>
+              <p className="text-[11.5px] text-[#86868B] pt-0.5">
+                {language === 'ko'
+                  ? '정책 출력은 후보 행동이며 Safety Kernel 통과 후에만 실제 모션으로 커밋.'
+                  : 'Policy outputs are candidate actions committed only after passing the safety kernel.'}
+              </p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-[#F5F5F7]/80 dark:bg-[#2C2C2E]/60 space-y-1.5">
+              <div className="text-xs font-semibold text-[#0071E3] dark:text-[#2997FF]">
+                {language === 'ko' ? 'CNN 학습 & 안전한 배포' : 'CNN Learning & Safe Rollout'}
+              </div>
+              <p className="text-xs leading-relaxed text-[#1D1D1F]/85 dark:text-[#F5F5F7]/85">
+                {language === 'ko'
+                  ? '경량 CNN 정책을 오프라인 학습 후 서명된 ONNX 패키지로 배포. 충돌 0건 및 베이스라인 대비 비열화 통계 검증 통과 모델만 활성화.'
+                  : 'Offline-trained lightweight CNN exported as signed ONNX packages, activated only after passing zero-collision and statistical non-inferiority gates.'}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. 3-TIER SYSTEM ARCHITECTURE */}
       <section className="space-y-5">
         <div>
           <p className="text-xs font-semibold uppercase tracking-wider text-[#0071E3] dark:text-[#2997FF] mb-1.5">

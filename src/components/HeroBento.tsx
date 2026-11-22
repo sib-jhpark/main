@@ -2,6 +2,7 @@ import { ArrowUpRight, Mail, MapPin } from 'lucide-react';
 import { useThemeLanguage } from '../context/ThemeLanguageContext';
 import { profileData } from '../data/profile';
 import { renderTextWithLinks } from '../utils/renderTextWithLinks';
+import { ProtectedImage } from './ProtectedImage';
 
 export function HeroBento() {
   const { language, pick } = useThemeLanguage();
@@ -11,19 +12,13 @@ export function HeroBento() {
       {/* 1. Top Identity Block (대표소개 — portrait left, text right) */}
       <section className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-9 pb-8 border-b border-black/[0.06] dark:border-white/[0.08]">
         {profileData.photoUrl && (
-          <div
-            onContextMenu={(e) => e.preventDefault()}
-            style={{ WebkitTouchCallout: 'none' }}
-            className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-3xl overflow-hidden border border-black/[0.06] dark:border-white/[0.08] shadow-apple-card shrink-0 select-none"
-          >
-            <img
-              src={profileData.photoUrl}
-              alt={pick(profileData.name)}
-              draggable={false}
-              className="w-full h-full object-cover pointer-events-none select-none"
-            />
-            <div aria-hidden="true" className="absolute inset-0" />
-          </div>
+          <ProtectedImage
+            src={profileData.photoUrl}
+            alt={pick(profileData.name)}
+            watermarkVariant="corner"
+            wrapperClassName="w-36 h-36 sm:w-44 sm:h-44 rounded-3xl border border-black/[0.06] dark:border-white/[0.08] shadow-apple-card shrink-0"
+            className="w-full h-full object-cover"
+          />
         )}
 
         <div className="space-y-3 min-w-0">

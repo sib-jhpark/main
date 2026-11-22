@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { AlertCircle, Check, Copy, FileText, Play, TrendingUp } from 'lucide-react';
+import { ProtectedImage } from './ProtectedImage';
 
 type DemoTab = 'polybag' | 'threeball' | 'other';
 type OutcomeTone = 'success' | 'recovery' | 'posture' | 'failure';
@@ -201,10 +202,12 @@ function FigureSlot({
     <div className="bento-card p-4">
       <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden border border-black/[0.05] dark:border-white/[0.08] bg-[#F5F5F7] dark:bg-[#2C2C2E]/60">
         {!missing ? (
-          <img
+          <ProtectedImage
             src={src}
             alt={title}
             onError={() => setMissing(true)}
+            watermarkVariant="tiled"
+            wrapperClassName="w-full h-full"
             className="w-full h-full object-contain"
           />
         ) : (
@@ -430,11 +433,13 @@ export function TwoStateMbrlPage() {
           {/* High-Level Concept Overview Diagram Slot (PNG with Inline SVG Fallback) */}
           <div className="rounded-2xl border border-black/[0.06] dark:border-white/[0.08] bg-[#FBFBFD] dark:bg-[#141416] p-4 sm:p-6">
             {!archMissing ? (
-              <img
+              <ProtectedImage
                 src="./assets/figures/architecture.png"
                 alt="Two-State MBRL High-Level Concept Overview"
                 onError={() => setArchMissing(true)}
-                className="w-full h-auto rounded-xl"
+                watermarkVariant="tiled"
+                wrapperClassName="rounded-xl"
+                className="w-full h-auto block"
               />
             ) : (
               <div className="space-y-3">
