@@ -362,14 +362,14 @@ export const profileData: ProfileData = {
     {
       id: 'edu-seoultech',
       type: 'education',
-      period: '2016 — 2020(중퇴)',
+      period: '2016 — 2020',
       organization: {
         ko: '서울과학기술대학교 (SeoulTech)',
         en: 'Seoul National University of Science and Technology (SeoulTech)',
       },
       role: {
-        ko: '글로벌융합산업공학과 학사',
-        en: 'B.S. in Global Convergence Industrial Engineering',
+        ko: '글로벌융합산업공학과 학사 (중퇴)',
+        en: 'B.S. in Global Convergence Industrial Engineering (Transferred)',
       },
       location: {
         ko: 'Seoul, South Korea',
