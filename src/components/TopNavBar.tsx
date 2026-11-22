@@ -2,8 +2,10 @@ import { Globe, Moon, Sun } from 'lucide-react';
 import { useThemeLanguage } from '../context/ThemeLanguageContext';
 import { profileData } from '../data/profile';
 
+export type TopTabId = 'home' | 'two-state-mbrl';
+
 export interface NavItem {
-  id: string;
+  id: TopTabId;
   href: string;
   label: { ko: string; en: string };
 }
@@ -13,14 +15,20 @@ export interface NavItem {
  * 추후 새로운 상위 페이지/탭을 추가할 때 이 배열에 항목을 추가하면 됩니다.
  */
 export const NAV_ITEMS: NavItem[] = [
-  { id: 'home', href: '#about', label: { ko: '홈', en: 'Home' } },
+  { id: 'home', href: '#home', label: { ko: '홈', en: 'Home' } },
+  {
+    id: 'two-state-mbrl',
+    href: '#two-state-mbrl',
+    label: { ko: 'Two-State MBRL', en: 'Two-State MBRL' },
+  },
 ];
 
 interface TopNavBarProps {
-  activeTab: string;
+  activeTab: TopTabId;
+  onSelectTab: (tab: TopTabId) => void;
 }
 
-export function TopNavBar({ activeTab }: TopNavBarProps) {
+export function TopNavBar({ activeTab, onSelectTab }: TopNavBarProps) {
   const { theme, language, toggleTheme, toggleLanguage, pick } = useThemeLanguage();
 
   return (
@@ -28,8 +36,12 @@ export function TopNavBar({ activeTab }: TopNavBarProps) {
       <div className="max-w-[1120px] mx-auto px-5 sm:px-8 h-[52px] flex items-center justify-between gap-4">
         {/* Left: Brand Wordmark */}
         <a
-          href="#about"
-          className="flex items-center gap-2.5 group focus:outline-none"
+          href="#home"
+          onClick={(e) => {
+            e.preventDefault();
+            onSelectTab('home');
+          }}
+          className="flex items-center gap-2.5 group focus:outline-none shrink-0"
         >
           <span className="font-bold tracking-tight text-[15px] text-[#0071E3] dark:text-[#2997FF]">
             {profileData.brand}
@@ -39,15 +51,20 @@ export function TopNavBar({ activeTab }: TopNavBarProps) {
           </span>
         </a>
 
-        {/* Center: Single Top-Level GNB (extensible for future pages) */}
-        <nav aria-label="Primary" className="flex items-center h-full gap-1">
+        {/* Center: Top-Level GNB */}
+        <nav aria-label="Primary" className="flex items-center h-full gap-1 overflow-x-auto no-scrollbar">
           {NAV_ITEMS.map((item) => {
             const isActive = activeTab === item.id;
             return (
               <a
                 key={item.id}
                 href={item.href}
-                className={`relative h-full px-3.5 flex items-center text-[13px] font-semibold transition-colors ${
+                onClick={(e) => {
+                  e.preventDefault();
+                  onSelectTab(item.id);
+                }}
+                aria-current={isActive ? 'page' : undefined}
+                className={`relative h-full px-3.5 flex items-center text-[13px] font-semibold whitespace-nowrap transition-colors ${
                   isActive
                     ? 'text-[#0071E3] dark:text-[#2997FF]'
                     : 'text-[#86868B] hover:text-[#1D1D1F] dark:hover:text-[#F5F5F7]'
@@ -63,7 +80,7 @@ export function TopNavBar({ activeTab }: TopNavBarProps) {
         </nav>
 
         {/* Right: Language & Theme Controls */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 shrink-0">
           <button
             type="button"
             onClick={toggleLanguage}

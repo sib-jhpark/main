@@ -1,9 +1,13 @@
 import { Globe, Moon, Sun } from 'lucide-react';
 import { useThemeLanguage } from '../context/ThemeLanguageContext';
 import { profileData } from '../data/profile';
-import { NAV_ITEMS } from './TopNavBar';
+import { NAV_ITEMS, type TopTabId } from './TopNavBar';
 
-export function Footer() {
+interface FooterProps {
+  onSelectTab: (tab: TopTabId) => void;
+}
+
+export function Footer({ onSelectTab }: FooterProps) {
   const { theme, language, toggleTheme, toggleLanguage, pick } = useThemeLanguage();
   const year = new Date().getFullYear();
 
@@ -25,6 +29,10 @@ export function Footer() {
               <a
                 key={item.id}
                 href={item.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  onSelectTab(item.id);
+                }}
                 className="hover:text-[#1D1D1F] dark:hover:text-[#F5F5F7] transition-colors"
               >
                 {pick(item.label)}
