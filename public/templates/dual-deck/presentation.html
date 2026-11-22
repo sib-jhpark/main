@@ -166,6 +166,15 @@
         --u: 1rem;
       }
 
+      html,
+      body {
+        height: 100%;
+        height: 100dvh;
+        width: 100%;
+        overflow: hidden;
+        overscroll-behavior: none;
+      }
+
       body {
         font-feature-settings: "cv02", "cv03", "cv04", "cv11";
         user-select: none;
@@ -204,8 +213,9 @@
       /* 16:9 고정 캔버스 (1920 × 1080) */
       .deck-stage {
         position: absolute;
-        inset: 1rem;
+        inset: 0.75rem;
         overflow: hidden;
+        touch-action: none;
       }
 
       @media (min-width: 768px) {
@@ -227,8 +237,19 @@
 
       body.presenting header,
       body.presenting footer,
-      body.presenting .progress-track {
+      body.presenting .progress-track,
+      body.presenting .mobile-portrait-tip {
         display: none !important;
+      }
+
+      .mobile-portrait-tip {
+        display: none;
+      }
+
+      @media (max-width: 640px) and (orientation: portrait) {
+        .mobile-portrait-tip {
+          display: flex;
+        }
       }
 
       body.presenting .deck-stage {
@@ -469,24 +490,24 @@
   >
     <!-- Top Apple Nav / Control Bar -->
     <header
-      class="no-print relative h-14 apple-glass border-b border-apple-border dark:border-apple-borderDark z-50 flex items-center justify-between px-6 shrink-0 select-none"
+      class="no-print relative h-14 w-full max-w-full apple-glass border-b border-apple-border dark:border-apple-borderDark z-50 flex items-center justify-between gap-2 px-3 sm:px-6 shrink-0 select-none"
     >
-      <div class="flex items-center gap-3 shrink-0">
+      <div class="hidden sm:flex items-center gap-3 shrink-0 min-w-0">
         <!-- ✏️ [커스텀]: 발표 날짜 및 행사/소속명 -->
         <span class="font-bold text-sm tracking-tight text-apple-text-primary dark:text-apple-text-primaryDark"
           >2026.XX.XX</span
         >
-        <span class="text-apple-text-tertiary dark:text-apple-text-tertiaryDark hidden sm:inline select-none font-light"
+        <span class="text-apple-text-tertiary dark:text-apple-text-tertiaryDark hidden md:inline select-none font-light"
           >|</span
         >
-        <span class="hidden sm:inline text-xs font-medium text-apple-text-secondary dark:text-apple-text-secondaryDark tracking-tight"
+        <span class="hidden md:inline text-xs font-medium text-apple-text-secondary dark:text-apple-text-secondaryDark tracking-tight truncate"
           >Your Seminar · Conference Name</span
         >
       </div>
 
-      <!-- Center Slide Counter & Navigation Controls -->
-      <div class="flex items-center gap-3">
-        <div class="hidden md:flex items-center gap-2 bg-apple-subtle dark:bg-apple-subtleDark p-1 rounded-full text-xs">
+      <!-- Center Slide Counter & Navigation Controls (모바일에서도 표시) -->
+      <div class="flex items-center gap-2 shrink-0">
+        <div class="flex items-center gap-1 sm:gap-2 bg-apple-subtle dark:bg-apple-subtleDark p-1 rounded-full text-xs">
           <button
             id="prevBtn"
             onclick="prevSlide()"
@@ -504,12 +525,12 @@
               <span id="currentSlideNum" class="text-apple-text-primary dark:text-apple-text-primaryDark font-bold"
                 >1</span
               >
-              / <span id="totalSlideNum">6</span>
+              / <span id="totalSlideNum">7</span>
               <i data-lucide="chevron-down" class="w-3 h-3"></i>
             </button>
             <div
               id="slideMenu"
-              class="hidden absolute left-1/2 -translate-x-1/2 top-full mt-2 w-80 max-h-[70vh] overflow-y-auto p-1.5 rounded-2xl bg-white dark:bg-apple-surfaceDark shadow-lg ring-1 ring-black/5 dark:ring-white/10 z-50"
+              class="hidden absolute left-0 sm:left-1/2 sm:-translate-x-1/2 top-full mt-2 w-72 sm:w-80 max-w-[calc(100vw-1.5rem)] max-h-[70vh] overflow-y-auto p-1.5 rounded-2xl bg-white dark:bg-apple-surfaceDark shadow-lg ring-1 ring-black/5 dark:ring-white/10 z-50"
             ></div>
           </div>
           <button
@@ -522,8 +543,8 @@
         </div>
       </div>
 
-      <!-- Right Controls -->
-      <div class="flex items-center gap-2">
+      <!-- Right Controls (모바일에서는 핵심 버튼만 노출해 상단바 넘침 방지) -->
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
         <button
           onclick="toggleOverview()"
           id="btnOverview"
@@ -537,7 +558,7 @@
           onclick="openPresenterView()"
           id="btnNotes"
           title="발표자 노트 창 열기 (P)"
-          class="w-8 h-8 rounded-lg flex items-center justify-center bg-apple-subtle dark:bg-apple-subtleDark hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-apple-text-secondary hover:text-apple-text-primary dark:text-apple-text-secondaryDark dark:hover:text-apple-text-primaryDark"
+          class="hidden sm:flex w-8 h-8 rounded-lg items-center justify-center bg-apple-subtle dark:bg-apple-subtleDark hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-apple-text-secondary hover:text-apple-text-primary dark:text-apple-text-secondaryDark dark:hover:text-apple-text-primaryDark"
         >
           <i data-lucide="file-text" class="w-4 h-4"></i>
         </button>
@@ -556,7 +577,7 @@
           onclick="toggleFullscreen()"
           id="btnFullscreen"
           title="전체화면 발표 모드 (F)"
-          class="w-8 h-8 rounded-lg flex items-center justify-center bg-apple-subtle dark:bg-apple-subtleDark hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-apple-text-secondary hover:text-apple-text-primary dark:text-apple-text-secondaryDark dark:hover:text-apple-text-primaryDark"
+          class="hidden sm:flex w-8 h-8 rounded-lg items-center justify-center bg-apple-subtle dark:bg-apple-subtleDark hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-apple-text-secondary hover:text-apple-text-primary dark:text-apple-text-secondaryDark dark:hover:text-apple-text-primaryDark"
         >
           <i data-lucide="maximize-2" class="w-4 h-4"></i>
         </button>
@@ -565,7 +586,7 @@
           onclick="window.print()"
           id="btnPrint"
           title="PDF / 인쇄"
-          class="w-8 h-8 rounded-lg flex items-center justify-center bg-apple-subtle dark:bg-apple-subtleDark hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-apple-text-secondary hover:text-apple-text-primary dark:text-apple-text-secondaryDark dark:hover:text-apple-text-primaryDark"
+          class="hidden sm:flex w-8 h-8 rounded-lg items-center justify-center bg-apple-subtle dark:bg-apple-subtleDark hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-apple-text-secondary hover:text-apple-text-primary dark:text-apple-text-secondaryDark dark:hover:text-apple-text-primaryDark"
         >
           <i data-lucide="printer" class="w-4 h-4"></i>
         </button>
@@ -574,7 +595,7 @@
           onclick="toggleHelp()"
           id="btnHelp"
           title="단축키 안내 (?)"
-          class="w-8 h-8 rounded-lg flex items-center justify-center bg-apple-subtle dark:bg-apple-subtleDark hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-apple-text-secondary hover:text-apple-text-primary dark:text-apple-text-secondaryDark dark:hover:text-apple-text-primaryDark"
+          class="hidden sm:flex w-8 h-8 rounded-lg items-center justify-center bg-apple-subtle dark:bg-apple-subtleDark hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-apple-text-secondary hover:text-apple-text-primary dark:text-apple-text-secondaryDark dark:hover:text-apple-text-primaryDark"
         >
           <i data-lucide="help-circle" class="w-4 h-4"></i>
         </button>
@@ -584,7 +605,7 @@
           href="interactive-showcase.html"
           id="interactiveLinkBtn"
           title="인터랙티브 웹 쇼케이스로 즉시 이동"
-          class="ml-1 inline-flex items-center gap-1.5 px-3 h-8 rounded-lg bg-apple-blue hover:bg-apple-blue-hover text-white text-xs font-semibold transition-colors shadow-sm"
+          class="ml-0.5 sm:ml-1 inline-flex items-center gap-1.5 px-2.5 sm:px-3 h-8 rounded-lg bg-apple-blue hover:bg-apple-blue-hover text-white text-xs font-semibold transition-colors shadow-sm"
         >
           <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
           <span class="hidden sm:inline">Showcase</span>
@@ -596,6 +617,20 @@
     <!-- Progress Bar -->
     <div class="progress-track no-print h-[3px] w-full bg-apple-subtle dark:bg-apple-subtleDark shrink-0">
       <div id="progressBar" class="h-full bg-apple-blue transition-all duration-300" style="width: 16.66%"></div>
+    </div>
+
+    <!-- Mobile Portrait Tip Banner (세로 모바일에서만 표시) -->
+    <div
+      class="mobile-portrait-tip no-print items-center justify-between gap-2 px-3 py-2 text-[11.5px] bg-apple-blue-light/80 dark:bg-apple-blue/15 text-apple-text-primary dark:text-apple-text-primaryDark border-b border-apple-border dark:border-apple-borderDark shrink-0"
+    >
+      <span class="truncate">가로 회전 또는 모바일용 Showcase 보기를 권장합니다.</span>
+      <a
+        id="mobileShowcaseLink"
+        href="interactive-showcase.html"
+        class="font-semibold text-apple-blue dark:text-apple-blue-dark whitespace-nowrap shrink-0"
+      >
+        Showcase ↗
+      </a>
     </div>
 
     <!-- Main 16:9 Presentation Stage -->
@@ -1429,11 +1464,12 @@
         const pBar = document.getElementById("progressBar");
         if (pBar) pBar.style.width = `${(currentSlide / total) * 100}%`;
 
+        const section = slides[currentSlide - 1]?.dataset.showcase;
+        const showcaseHref = `interactive-showcase.html?from=${currentSlide}${section ? "#" + section : ""}`;
         const showcaseBtn = document.getElementById("interactiveLinkBtn");
-        if (showcaseBtn) {
-          const section = slides[currentSlide - 1]?.dataset.showcase;
-          showcaseBtn.href = `interactive-showcase.html?from=${currentSlide}${section ? "#" + section : ""}`;
-        }
+        if (showcaseBtn) showcaseBtn.href = showcaseHref;
+        const mobileShowcaseLink = document.getElementById("mobileShowcaseLink");
+        if (mobileShowcaseLink) mobileShowcaseLink.href = showcaseHref;
 
         renderDots();
         updatePresenterView();
@@ -1827,14 +1863,36 @@
       });
 
       let touchStartX = 0;
-      window.addEventListener("touchstart", (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-      });
-      window.addEventListener("touchend", (e) => {
-        const touchEndX = e.changedTouches[0].screenX;
-        if (touchEndX < touchStartX - 50) nextSlide();
-        if (touchEndX > touchStartX + 50) prevSlide();
-      });
+      let touchStartY = 0;
+      let touchActive = false;
+      const deckStageEl = document.getElementById("deckStage");
+      deckStageEl.addEventListener(
+        "touchstart",
+        (e) => {
+          if (e.touches.length !== 1 || isVideoOpen() || document.getElementById("imageModal")?.open) {
+            touchActive = false;
+            return;
+          }
+          touchActive = true;
+          touchStartX = e.changedTouches[0].clientX;
+          touchStartY = e.changedTouches[0].clientY;
+        },
+        { passive: true },
+      );
+      deckStageEl.addEventListener(
+        "touchend",
+        (e) => {
+          if (!touchActive) return;
+          touchActive = false;
+          const dx = e.changedTouches[0].clientX - touchStartX;
+          const dy = e.changedTouches[0].clientY - touchStartY;
+          if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+            if (dx < 0) nextSlide();
+            else prevSlide();
+          }
+        },
+        { passive: true },
+      );
 
       window.addEventListener("beforeunload", () => {
         if (presenterWin && !presenterWin.closed) presenterWin.close();
