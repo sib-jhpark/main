@@ -1,2 +1,2 @@
-# jhpark.github.com
+# jhpark.github.io
 jaehyun park's profile
