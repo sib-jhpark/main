@@ -27,14 +27,14 @@ function getInitialTheme(): Theme {
 }
 
 function getInitialLanguage(): Language {
-  if (typeof window === 'undefined') return 'ko';
+  if (typeof window === 'undefined') return 'en';
   try {
     const saved = localStorage.getItem(LANG_KEY);
     if (saved === 'ko' || saved === 'en') return saved;
   } catch {
     // ignore storage errors
   }
-  return 'ko';
+  return 'en';
 }
 
 export function ThemeLanguageProvider({ children }: { children: ReactNode }) {
