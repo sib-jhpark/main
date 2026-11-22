@@ -31,6 +31,21 @@ function StatusBadge({ status, language }: { status: ProjectStatus; language: 'k
       text: 'text-[#C93400] dark:text-[#FF9F0A]',
       label: { ko: '진행 중', en: 'In Progress' },
     },
+    planned: {
+      dot: 'bg-[#86868B] dark:bg-[#98989D]',
+      text: 'text-[#86868B] dark:text-[#98989D]',
+      label: { ko: '계획 중', en: 'Planned' },
+    },
+    research: {
+      dot: 'bg-[#5856D6] dark:bg-[#5E5CE6]',
+      text: 'text-[#5856D6] dark:text-[#7D7AFF]',
+      label: { ko: '연구 중', en: 'Research' },
+    },
+    completed: {
+      dot: 'bg-[#1D1D1F] dark:bg-[#F5F5F7]',
+      text: 'text-[#1D1D1F] dark:text-[#F5F5F7]',
+      label: { ko: '완료', en: 'Completed' },
+    },
   };
 
   const current = config[status];

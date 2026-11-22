@@ -82,7 +82,7 @@ export const profileData: ProfileData = {
         en: 'Scalable distributed multi-agent path finding with Model-Based RL',
       },
       category: 'rl',
-      status: 'wip',
+      status: 'planned',
       year: '2026',
       featured: true,
       summary: {
@@ -130,7 +130,7 @@ export const profileData: ProfileData = {
         en: 'Intrinsic value valuation & Direct Indexing personal ETF platform',
       },
       category: 'fintech',
-      status: 'live',
+      status: 'completed',
       year: '2026',
       featured: true,
       summary: {
@@ -178,7 +178,7 @@ export const profileData: ProfileData = {
         en: 'High-speed humanoid manipulation via Two-State Model-Based RL',
       },
       category: 'rl',
-      status: 'wip',
+      status: 'research',
       year: '2026',
       summary: {
         ko: '파지·수건 접기 등 복합 조작 동작의 Two-State 수학적 추상화 및 모델 기반 강화학습(MBRL) 기반 고속 휴머노이드 제어 연구',
@@ -220,7 +220,7 @@ export const profileData: ProfileData = {
         en: 'Heterogeneous robot optimization algorithms & Omniverse / Isaac Sim emulator',
       },
       category: 'optimization',
-      status: 'live',
+      status: 'completed',
       year: '2026',
       summary: {
         ko: 'LG CNS 이기종 로봇 플랫폼(피지컬 웍스 바톤, PWB) Contextual Bandit 자원 할당, 적응형 배터리 최적화 및 NVIDIA Omniverse Kit·Isaac Sim 3D 운영 시뮬레이터 MVP 구축',

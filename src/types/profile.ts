@@ -13,7 +13,13 @@ export interface HeroMetric {
 }
 
 export type ProjectCategory = 'rl' | 'optimization' | 'fintech';
-export type ProjectStatus = 'live' | 'opensource' | 'wip';
+export type ProjectStatus =
+  | 'live'
+  | 'opensource'
+  | 'wip'
+  | 'planned'
+  | 'research'
+  | 'completed';
 
 export interface ProjectItem {
   id: string;
