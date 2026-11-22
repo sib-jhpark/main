@@ -96,8 +96,10 @@ export interface SocialLink {
 
 export interface ProfileData {
   brand: string;
+  photoUrl?: string;
   name: LocalizedText;
   role: LocalizedText;
+  affiliations?: LocalizedText[];
   location: LocalizedText;
   availability: {
     active: boolean;
