@@ -1,0 +1,1517 @@
+<!doctype html>
+<html lang="ko" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- ✏️ [커스텀]: 슬라이드 덱 브라우저 탭 타이틀 -->
+    <title>Dual-Mode Presentation Template</title>
+
+    <!-- Fonts & Libraries (CDN — 별도 서버나 폴더 없이 단일 HTML 파일로 바로 실행) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+
+    <script>
+      // 크기 단위 --u: 기본 1rem(16px), 1920×1080 슬라이드 캔버스 안에서는 24px.
+      // 슬라이드는 기존 클래스(text-xl, p-14 …) 그대로 1920 기준으로 1.5배 커지고,
+      // 툴바·모달 등 화면 UI는 원래 크기를 유지합니다.
+      const u = (rem) => `calc(var(--u) * ${rem})`;
+      const SPACING_KEYS = [
+        0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60,
+        64, 72, 80, 96,
+      ];
+      const deckSpacing = Object.fromEntries(SPACING_KEYS.map((k) => [k, u(k / 4)]));
+      const deckFontSize = Object.fromEntries(
+        Object.entries({
+          xs: [0.75, 1],
+          sm: [0.875, 1.25],
+          base: [1, 1.5],
+          lg: [1.125, 1.75],
+          xl: [1.25, 1.75],
+          "2xl": [1.5, 2],
+          "3xl": [1.875, 2.25],
+          "4xl": [2.25, 2.5],
+          "5xl": [3],
+          "6xl": [3.75],
+          "7xl": [4.5],
+          "8xl": [6],
+          "9xl": [8],
+        }).map(([k, [size, lh]]) => [k, [u(size), { lineHeight: lh ? u(lh) : "1" }]]),
+      );
+      const deckRadius = Object.fromEntries(
+        Object.entries({
+          sm: 0.125,
+          DEFAULT: 0.25,
+          md: 0.375,
+          lg: 0.5,
+          xl: 0.75,
+          "2xl": 1,
+          "3xl": 1.5,
+        }).map(([k, v]) => [k, u(v)]),
+      );
+      const deckMaxWidth = Object.fromEntries(
+        Object.entries({
+          xs: 20,
+          sm: 24,
+          md: 28,
+          lg: 32,
+          xl: 36,
+          "2xl": 42,
+          "3xl": 48,
+          "4xl": 56,
+          "5xl": 64,
+          "6xl": 72,
+          "7xl": 80,
+        }).map(([k, v]) => [k, u(v)]),
+      );
+
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            spacing: deckSpacing,
+            fontSize: deckFontSize,
+            borderRadius: deckRadius,
+            maxWidth: deckMaxWidth,
+            colors: {
+              apple: {
+                canvas: "#F5F5F7",
+                canvasDark: "#0B0B0C",
+                surface: "#FFFFFF",
+                surfaceDark: "#161618",
+                surfaceElevated: "#1E1E20",
+                subtle: "#EBEBED",
+                subtleDark: "#242426",
+                border: "rgba(0, 0, 0, 0.08)",
+                borderDark: "rgba(255, 255, 255, 0.1)",
+                divider: "rgba(0, 0, 0, 0.05)",
+                dividerDark: "rgba(255, 255, 255, 0.06)",
+                text: {
+                  primary: "#1D1D1F",
+                  primaryDark: "#F5F5F7",
+                  secondary: "#86868B",
+                  secondaryDark: "#A1A1A6",
+                  tertiary: "#A1A1A6",
+                  tertiaryDark: "#636366",
+                },
+                blue: {
+                  DEFAULT: "#0071E3",
+                  hover: "#0077ED",
+                  light: "#E8F2FD",
+                  dark: "#0A84FF",
+                },
+                green: {
+                  DEFAULT: "#34C759",
+                  light: "#EAF8EE",
+                  dark: "#30D158",
+                },
+                red: {
+                  DEFAULT: "#FF3B30",
+                  light: "#FEECEB",
+                  dark: "#FF453A",
+                },
+                orange: {
+                  DEFAULT: "#FF9500",
+                  light: "#FFF4E5",
+                  dark: "#FF9F0A",
+                },
+                gold: {
+                  DEFAULT: "#D97706",
+                  light: "#FEF3C7",
+                  dark: "#FFD60A",
+                },
+                purple: {
+                  DEFAULT: "#AF52DE",
+                  light: "#F5E8FC",
+                  dark: "#BF5AF2",
+                },
+              },
+            },
+            fontFamily: {
+              sans: ["Pretendard", "-apple-system", "BlinkMacSystemFont", "SF Pro Display", "Inter", "sans-serif"],
+              mono: ["JetBrains Mono", "SF Mono", "monospace"],
+              serif: ["Georgia", "serif"],
+            },
+            boxShadow: {
+              "apple-card": `0 ${u(0.125)} ${u(0.75)} 0 rgba(0, 0, 0, 0.04), 0 ${u(0.0625)} ${u(0.125)} 0 rgba(0, 0, 0, 0.02)`,
+              "apple-hover": `0 ${u(0.75)} ${u(2)} 0 rgba(0, 0, 0, 0.08), 0 ${u(0.125)} ${u(0.375)} 0 rgba(0, 0, 0, 0.04)`,
+              "apple-pill": `0 ${u(0.0625)} ${u(0.1875)} 0 rgba(0, 0, 0, 0.08)`,
+              "apple-modal": `0 ${u(1.5)} ${u(4)} ${u(-0.75)} rgba(0, 0, 0, 0.2)`,
+            },
+          },
+        },
+      };
+    </script>
+
+    <script>
+      try {
+        document.documentElement.classList.toggle("dark", localStorage.getItem("dual-deck-theme") === "dark");
+      } catch (_) {}
+    </script>
+
+    <style>
+      * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      :root {
+        --u: 1rem;
+      }
+
+      body {
+        font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+        user-select: none;
+      }
+
+      .tabular-nums {
+        font-variant-numeric: tabular-nums;
+      }
+
+      .math {
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      .slide-page {
+        word-break: keep-all;
+        padding-bottom: calc(var(--u) * 5.5) !important;
+      }
+
+      .slide-footer {
+        position: absolute;
+        bottom: calc(var(--u) * 3.5);
+        left: calc(var(--u) * 3.5);
+        right: calc(var(--u) * 3.5);
+      }
+
+      .apple-glass {
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+
+      .dark .apple-glass {
+        background: rgba(22, 22, 24, 0.75);
+      }
+
+      /* 16:9 고정 캔버스 (1920 × 1080) */
+      .deck-stage {
+        position: absolute;
+        inset: 1rem;
+        overflow: hidden;
+      }
+
+      @media (min-width: 768px) {
+        .deck-stage {
+          inset: 1.5rem;
+        }
+      }
+
+      .deck-frame {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 1920px;
+        height: 1080px;
+        --u: 24px;
+        transform-origin: center center;
+        transform: translate(-50%, -50%) scale(var(--deck-scale, 1));
+      }
+
+      body.presenting header,
+      body.presenting footer,
+      body.presenting .progress-track {
+        display: none !important;
+      }
+
+      body.presenting .deck-stage {
+        inset: 0;
+      }
+
+      body.no-anim .slide-page {
+        transition: none !important;
+      }
+
+      body.presenting .deck-frame {
+        border-radius: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+      }
+
+      /* Print / PDF Export (1920 × 1080, 슬라이드당 1쪽) */
+      @page {
+        size: 1920px 1080px;
+        margin: 0;
+      }
+
+      @media print {
+        * {
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+          animation: none !important;
+          transition: none !important;
+        }
+
+        html,
+        body {
+          width: 1920px !important;
+          height: auto !important;
+          overflow: visible !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          background: #ffffff !important;
+        }
+
+        html.dark body {
+          background: #0b0b0c !important;
+        }
+
+        .no-print,
+        #overviewModal,
+        #notesDrawer,
+        #helpModal,
+        #toast,
+        header,
+        footer {
+          display: none !important;
+        }
+
+        .presentation-viewport,
+        .deck-stage {
+          display: block !important;
+          position: static !important;
+          padding: 0 !important;
+          width: 1920px !important;
+          height: auto !important;
+          overflow: visible !important;
+        }
+
+        .deck-frame {
+          position: static !important;
+          transform: none !important;
+          width: 1920px !important;
+          height: auto !important;
+          border: none !important;
+          border-radius: 0 !important;
+          box-shadow: none !important;
+          background: transparent !important;
+          overflow: visible !important;
+        }
+
+        .slide-page {
+          position: relative !important;
+          inset: auto !important;
+          width: 1920px !important;
+          height: 1080px !important;
+          opacity: 1 !important;
+          pointer-events: auto !important;
+          transform: none !important;
+          overflow: hidden !important;
+          background: #ffffff !important;
+          break-after: page !important;
+          page-break-after: always !important;
+          break-inside: avoid !important;
+        }
+
+        html.dark .slide-page {
+          background: #161618 !important;
+        }
+
+        .slide-page,
+        .slide-page * {
+          box-shadow: none !important;
+        }
+
+        .slide-page:last-child {
+          break-after: auto !important;
+          page-break-after: auto !important;
+        }
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.15);
+        border-radius: 9999px;
+      }
+
+      .dark ::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      /* Supplement / Bento layout helpers */
+      .supplement-content {
+        margin: calc(var(--u) * 0.6) 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--u) * 1);
+        font-size: calc(var(--u) * 1.125);
+        line-height: 1.5;
+      }
+      .supplement-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: calc(var(--u) * 1.5);
+      }
+      .supplement-panel {
+        padding: calc(var(--u) * 1.4);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: calc(var(--u) * 1);
+        background: rgba(235, 235, 237, 0.5);
+      }
+      .dark .supplement-panel {
+        background: rgba(36, 36, 38, 0.5);
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+      .supplemented {
+        --accent: #0071e3;
+      }
+      .supplemented.accent-green {
+        --accent: #34c759;
+      }
+      .supplemented.accent-orange {
+        --accent: #ff9500;
+      }
+      .supplemented.accent-purple {
+        --accent: #af52de;
+      }
+      .dark .supplemented {
+        --accent: #64aaff;
+      }
+      .dark .supplemented.accent-green {
+        --accent: #30d158;
+      }
+      .dark .supplemented.accent-orange {
+        --accent: #ff9f0a;
+      }
+      .dark .supplemented.accent-purple {
+        --accent: #bf5af2;
+      }
+      .supplement-panel h3 {
+        display: flex;
+        align-items: center;
+        gap: calc(var(--u) * 0.5);
+        font-size: calc(var(--u) * 1.25);
+        font-weight: 700;
+        margin-bottom: calc(var(--u) * 0.9);
+      }
+      .supplement-rows > div {
+        padding: calc(var(--u) * 0.5) 0;
+        border-bottom: 1px solid rgba(134, 134, 139, 0.18);
+      }
+      .supplement-rows > div:last-child {
+        border-bottom: 0;
+      }
+      .supplement-rows dt {
+        font-weight: 700;
+        color: var(--accent);
+        font-size: calc(var(--u) * 0.95);
+        margin-bottom: calc(var(--u) * 0.12);
+      }
+      .supplement-note {
+        font-size: calc(var(--u) * 0.875);
+        color: #68686e;
+        line-height: 1.45;
+      }
+      .dark .supplement-note {
+        color: #a1a1a6;
+      }
+      .supplement-equation {
+        font-size: calc(var(--u) * 1.8);
+        padding: calc(var(--u) * 0.6) 0 calc(var(--u) * 0.8);
+      }
+      .supplement-callout {
+        padding: calc(var(--u) * 1) calc(var(--u) * 1.4);
+        border-left: 4px solid var(--accent);
+        background: color-mix(in srgb, var(--accent) 6%, transparent);
+        border-radius: 0 calc(var(--u) * 0.5) calc(var(--u) * 0.5) 0;
+      }
+      .supplement-callout strong {
+        display: block;
+        margin-bottom: calc(var(--u) * 0.35);
+      }
+      .supplement-link {
+        display: inline-flex;
+        align-items: center;
+        align-self: flex-start;
+        gap: calc(var(--u) * 0.4);
+        color: #0071e3;
+        font-size: calc(var(--u) * 0.95);
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .dark .supplement-link {
+        color: #64aaff;
+      }
+      .supplement-link:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body
+    class="h-full bg-apple-canvas dark:bg-apple-canvasDark text-apple-text-primary dark:text-apple-text-primaryDark flex flex-col font-sans transition-colors duration-300 overflow-hidden"
+  >
+    <!-- Top Apple Nav / Control Bar -->
+    <header
+      class="no-print relative h-14 apple-glass border-b border-apple-border dark:border-apple-borderDark z-50 flex items-center justify-between px-6 shrink-0 select-none"
+    >
+      <div class="flex items-center gap-3 shrink-0">
+        <!-- ✏️ [커스텀]: 발표 날짜 및 행사/소속명 -->
+        <span class="font-bold text-sm tracking-tight text-apple-text-primary dark:text-apple-text-primaryDark"
+          >2026.XX.XX</span
+        >
+        <span class="text-apple-text-tertiary dark:text-apple-text-tertiaryDark hidden sm:inline select-none font-light"
+          >|</span
+        >
+        <span class="hidden sm:inline text-xs font-medium text-apple-text-secondary dark:text-apple-text-secondaryDark tracking-tight"
+          >Your Seminar · Conference Name</span
+        >
+      </div>
+
+      <!-- Center Slide Counter & Navigation Controls -->
+      <div class="flex items-center gap-3">
+        <div class="hidden md:flex items-center gap-2 bg-apple-subtle dark:bg-apple-subtleDark p-1 rounded-full text-xs">
+          <button
+            id="prevBtn"
+            onclick="prevSlide()"
+            class="w-7 h-7 flex items-center justify-center rounded-full hover:bg-white dark:hover:bg-apple-surfaceDark transition-all text-apple-text-primary dark:text-apple-text-primaryDark disabled:opacity-30"
+          >
+            <i data-lucide="chevron-left" class="w-4 h-4"></i>
+          </button>
+          <div id="slideMenuWrap" class="relative">
+            <button
+              id="slideMenuBtn"
+              onclick="toggleSlideMenu(event)"
+              title="슬라이드 목록"
+              class="px-2 h-7 flex items-center gap-1 rounded-full hover:bg-white dark:hover:bg-apple-surfaceDark transition-all font-mono font-medium text-xs text-apple-text-secondary dark:text-apple-text-secondaryDark"
+            >
+              <span id="currentSlideNum" class="text-apple-text-primary dark:text-apple-text-primaryDark font-bold"
+                >1</span
+              >
+              / <span id="totalSlideNum">6</span>
+              <i data-lucide="chevron-down" class="w-3 h-3"></i>
+            </button>
+            <div
+              id="slideMenu"
+              class="hidden absolute left-1/2 -translate-x-1/2 top-full mt-2 w-80 max-h-[70vh] overflow-y-auto p-1.5 rounded-2xl bg-white dark:bg-apple-surfaceDark shadow-lg ring-1 ring-black/5 dark:ring-white/10 z-50"
+            ></div>
+          </div>
+          <button
+            id="nextBtn"
+            onclick="nextSlide()"
+            class="w-7 h-7 flex items-center justify-center rounded-full hover:bg-white dark:hover:bg-apple-surfaceDark transition-all text-apple-text-primary dark:text-apple-text-primaryDark disabled:opacity-30"
+          >
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Controls -->
+      <div class="flex items-center gap-2">
+        <button
+          onclick="toggleOverview()"
+          id="btnOverview"
+          title="슬라이드 전체보기 (O)"
+          class="w-8 h-8 rounded-lg flex items-center justify-center bg-apple-subtle dark:bg-apple-subtleDark hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-apple-text-secondary hover:text-apple-text-primary dark:text-apple-text-secondaryDark dark:hover:text-apple-text-primaryDark"
+        >
+          <i data-lucide="layout-grid" class="w-4 h-4"></i>
+        </button>
+
+        <button
+          onclick="openPresenterView()"
+          id="btnNotes"
+          title="발표자 노트 창 열기 (P)"
+          class="w-8 h-8 rounded-lg flex items-center justify-center bg-apple-subtle dark:bg-apple-subtleDark hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-apple-text-secondary hover:text-apple-text-primary dark:text-apple-text-secondaryDark dark:hover:text-apple-text-primaryDark"
+        >
+          <i data-lucide="file-text" class="w-4 h-4"></i>
+        </button>
+
+        <button
+          onclick="toggleTheme()"
+          id="btnTheme"
+          title="다크 모드 토글"
+          class="w-8 h-8 rounded-lg flex items-center justify-center bg-apple-subtle dark:bg-apple-subtleDark hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-apple-text-secondary hover:text-apple-text-primary dark:text-apple-text-secondaryDark dark:hover:text-apple-text-primaryDark"
+        >
+          <i data-lucide="moon" class="w-4 h-4 hidden dark:block text-apple-gold"></i>
+          <i data-lucide="sun" class="w-4 h-4 block dark:hidden text-apple-orange"></i>
+        </button>
+
+        <button
+          onclick="toggleFullscreen()"
+          id="btnFullscreen"
+          title="전체화면 발표 모드 (F)"
+          class="w-8 h-8 rounded-lg flex items-center justify-center bg-apple-subtle dark:bg-apple-subtleDark hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-apple-text-secondary hover:text-apple-text-primary dark:text-apple-text-secondaryDark dark:hover:text-apple-text-primaryDark"
+        >
+          <i data-lucide="maximize-2" class="w-4 h-4"></i>
+        </button>
+
+        <button
+          onclick="window.print()"
+          id="btnPrint"
+          title="PDF / 인쇄"
+          class="w-8 h-8 rounded-lg flex items-center justify-center bg-apple-subtle dark:bg-apple-subtleDark hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-apple-text-secondary hover:text-apple-text-primary dark:text-apple-text-secondaryDark dark:hover:text-apple-text-primaryDark"
+        >
+          <i data-lucide="printer" class="w-4 h-4"></i>
+        </button>
+
+        <button
+          onclick="toggleHelp()"
+          id="btnHelp"
+          title="단축키 안내 (?)"
+          class="w-8 h-8 rounded-lg flex items-center justify-center bg-apple-subtle dark:bg-apple-subtleDark hover:bg-black/10 dark:hover:bg-white/10 transition-colors text-apple-text-secondary hover:text-apple-text-primary dark:text-apple-text-secondaryDark dark:hover:text-apple-text-primaryDark"
+        >
+          <i data-lucide="help-circle" class="w-4 h-4"></i>
+        </button>
+
+        <!-- 🔗 INTERACTIVE SHOWCASE DEEP-LINK BUTTON -->
+        <a
+          href="interactive-showcase.html"
+          id="interactiveLinkBtn"
+          title="인터랙티브 웹 쇼케이스로 즉시 이동"
+          class="ml-1 inline-flex items-center gap-1.5 px-3 h-8 rounded-lg bg-apple-blue hover:bg-apple-blue-hover text-white text-xs font-semibold transition-colors shadow-sm"
+        >
+          <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+          <span class="hidden sm:inline">Showcase</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
+    </header>
+
+    <!-- Progress Bar -->
+    <div class="progress-track no-print h-[3px] w-full bg-apple-subtle dark:bg-apple-subtleDark shrink-0">
+      <div id="progressBar" class="h-full bg-apple-blue transition-all duration-300" style="width: 16.66%"></div>
+    </div>
+
+    <!-- Main 16:9 Presentation Stage -->
+    <main class="presentation-viewport relative flex-1 overflow-hidden">
+      <div id="deckStage" class="deck-stage">
+        <div
+          id="deckContainer"
+          class="deck-frame bg-apple-surface dark:bg-apple-surfaceDark rounded-3xl border border-apple-border dark:border-apple-borderDark shadow-apple-card overflow-hidden"
+        >
+          <!-- ============================================================ -->
+          <!-- SLIDE 1: COVER (표지)                                         -->
+          <!-- ✏️ [커스텀]: data-title-ko, data-notes-ko, 제목/발표자 수정     -->
+          <!-- ============================================================ -->
+          <section
+            class="slide-page absolute inset-0 p-14 flex flex-col justify-between opacity-100 transition-opacity duration-300"
+            data-title-ko="표지"
+            data-showcase="deep-dive"
+            data-notes-ko="안녕하세요. 발표를 시작하겠습니다. 이 템플릿은 presentation.html(슬라이드)과 interactive-showcase.html(상세 문서)을 오가며 발표하는 듀얼 모드 양식입니다."
+          >
+            <div class="flex items-center justify-between">
+              <span
+                class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold bg-apple-blue-light dark:bg-apple-blue/20 text-apple-blue dark:text-apple-blue-dark"
+              >
+                <span class="w-2 h-2 rounded-full bg-apple-blue dark:bg-apple-blue-dark"></span>
+                KEYNOTE · RESEARCH SEMINAR
+              </span>
+              <span class="text-base font-mono text-apple-text-secondary dark:text-apple-text-secondaryDark">
+                2026.XX.XX
+              </span>
+            </div>
+
+            <div class="my-auto space-y-6 max-w-5xl">
+              <h1
+                class="text-6xl font-bold tracking-tight leading-tight text-apple-text-primary dark:text-apple-text-primaryDark"
+              >
+                발표 제목을 여기에 입력하세요<br />
+                <span class="text-apple-blue dark:text-apple-blue-dark">Subtitle or Core Research Theme</span>
+              </h1>
+              <p class="text-2xl text-apple-text-secondary dark:text-apple-text-secondaryDark leading-relaxed">
+                핵심 메시지와 연구·프로젝트 한 줄 요약을 작성합니다.<br />
+                상세 수식·표·참고 자료는 우측 상단 <strong class="text-apple-text-primary dark:text-apple-text-primaryDark">Showcase</strong> 버튼으로 즉시 전환할 수 있습니다.
+              </p>
+
+              <div class="pt-4 space-y-1 text-xl text-apple-text-primary dark:text-apple-text-primaryDark">
+                <p class="font-semibold">홍길동 (Your Name) · 직함 / 연구실</p>
+                <p class="text-apple-blue dark:text-apple-blue-dark font-medium">
+                  Department / Organization · email@example.com
+                </p>
+              </div>
+            </div>
+
+            <div class="slide-footer flex items-center justify-between text-base text-apple-text-tertiary">
+              <span>Dual-Mode Presentation Template · F(전체화면) · O(개요) · P(발표자 노트)</span>
+              <span class="slide-num font-mono tabular-nums">1 / 6</span>
+            </div>
+          </section>
+
+          <!-- ============================================================ -->
+          <!-- SLIDE 2: AGENDA & DUAL-MODE WORKFLOW                          -->
+          <!-- ============================================================ -->
+          <section
+            class="slide-page absolute inset-0 p-14 flex flex-col justify-between opacity-0 pointer-events-none transition-opacity duration-300"
+            data-title-ko="발표 구성 & 듀얼 모드"
+            data-showcase="deep-dive"
+            data-notes-ko="전체 발표 흐름을 먼저 소개하고, 깊은 수식이나 벤치마크 질문이 나오면 쇼케이스 문서로 이동했다가 현재 슬라이드로 바로 돌아오는 방식을 설명합니다."
+          >
+            <div>
+              <p class="text-sm font-bold uppercase tracking-wider text-apple-blue dark:text-apple-blue-dark mb-2">
+                01 · AGENDA &amp; WORKFLOW
+              </p>
+              <h2 class="text-4xl font-bold tracking-tight text-apple-text-primary dark:text-apple-text-primaryDark">
+                발표 구성과 듀얼 모드 진행 방식
+              </h2>
+            </div>
+
+            <div class="grid grid-cols-3 gap-6 my-auto">
+              <div
+                class="p-7 rounded-2xl bg-apple-subtle/60 dark:bg-apple-subtleDark/60 border border-apple-border dark:border-apple-borderDark space-y-3"
+              >
+                <span class="inline-block text-sm font-mono font-bold text-apple-blue dark:text-apple-blue-dark"
+                  >PART 01</span
+                >
+                <h3 class="text-2xl font-bold text-apple-text-primary dark:text-apple-text-primaryDark">
+                  문제 정의 &amp; 배경
+                </h3>
+                <p class="text-lg text-apple-text-secondary dark:text-apple-text-secondaryDark leading-relaxed">
+                  기존 접근법의 한계와 핵심 지표를 16:9 슬라이드로 간결하게 전달합니다.
+                </p>
+              </div>
+
+              <div
+                class="p-7 rounded-2xl bg-apple-subtle/60 dark:bg-apple-subtleDark/60 border border-apple-border dark:border-apple-borderDark space-y-3"
+              >
+                <span class="inline-block text-sm font-mono font-bold text-apple-green dark:text-apple-green-dark"
+                  >PART 02</span
+                >
+                <h3 class="text-2xl font-bold text-apple-text-primary dark:text-apple-text-primaryDark">
+                  방법론 &amp; 아키텍처
+                </h3>
+                <p class="text-lg text-apple-text-secondary dark:text-apple-text-secondaryDark leading-relaxed">
+                  핵심 구조와 수식을 요약하고, 필요 시 쇼케이스의 상세 증명·다이어그램으로 이동합니다.
+                </p>
+              </div>
+
+              <div
+                class="p-7 rounded-2xl bg-apple-subtle/60 dark:bg-apple-subtleDark/60 border border-apple-border dark:border-apple-borderDark space-y-3"
+              >
+                <span class="inline-block text-sm font-mono font-bold text-apple-purple dark:text-apple-purple-dark"
+                  >PART 03</span
+                >
+                <h3 class="text-2xl font-bold text-apple-text-primary dark:text-apple-text-primaryDark">
+                  실험 결과 &amp; Q&amp;A
+                </h3>
+                <p class="text-lg text-apple-text-secondary dark:text-apple-text-secondaryDark leading-relaxed">
+                  정량적 성과를 공유하고, Q&amp;A 시 쇼케이스의 전체 표와 참고 문헌을 즉시 띄웁니다.
+                </p>
+              </div>
+            </div>
+
+            <div class="supplement-callout supplemented">
+              <strong class="text-lg text-apple-text-primary dark:text-apple-text-primaryDark"
+                >듀얼 모드 팁: 슬라이드 ↔ 쇼케이스 1초 왕복</strong
+              >
+              <p class="text-base text-apple-text-secondary dark:text-apple-text-secondaryDark">
+                각 슬라이드의 <code class="font-mono">data-showcase="section-id"</code> 속성을 지정하면, 상단
+                <strong>Showcase</strong> 버튼이나 슬라이드 하단 링크를 눌렀을 때 해당 상세 섹션으로 이동하고
+                <strong>"발표로 돌아가기 ↗"</strong> 클릭 시 보고 있던 슬라이드 번호로 정확히 복귀합니다.
+              </p>
+            </div>
+
+            <div class="slide-footer flex items-center justify-between text-base text-apple-text-tertiary">
+              <span>Your Seminar · Presentation Template</span>
+              <span class="slide-num font-mono tabular-nums">2 / 6</span>
+            </div>
+          </section>
+
+          <!-- ============================================================ -->
+          <!-- SLIDE 3: PROBLEM & KPI METRICS                                -->
+          <!-- ============================================================ -->
+          <section
+            class="slide-page supplemented absolute inset-0 p-14 flex flex-col justify-between opacity-0 pointer-events-none transition-opacity duration-300"
+            data-title-ko="문제 정의 & 핵심 지표"
+            data-showcase="deep-dive"
+            data-notes-ko="문제의 배경과 정량적 병목을 강조합니다. 세부 사례나 아코디언 FAQ는 아래 링크를 눌러 쇼케이스 #deep-dive 섹션에서 보여줄 수 있습니다."
+          >
+            <div>
+              <p class="text-sm font-bold uppercase tracking-wider text-apple-blue dark:text-apple-blue-dark mb-2">
+                02 · PROBLEM STATEMENT
+              </p>
+              <h2 class="text-4xl font-bold tracking-tight text-apple-text-primary dark:text-apple-text-primaryDark">
+                기존 방식의 한계와 해결해야 할 병목
+              </h2>
+            </div>
+
+            <div class="supplement-content">
+              <div class="grid grid-cols-3 gap-5">
+                <div class="supplement-panel">
+                  <p class="text-sm font-semibold text-apple-text-secondary dark:text-apple-text-secondaryDark">
+                    핵심 지표 A (Latency)
+                  </p>
+                  <p class="text-5xl font-bold font-mono tabular-nums text-apple-blue dark:text-apple-blue-dark mt-2">
+                    -42%
+                  </p>
+                  <p class="supplement-note mt-2">기존 베이스라인 대비 목표 개선 폭</p>
+                </div>
+                <div class="supplement-panel">
+                  <p class="text-sm font-semibold text-apple-text-secondary dark:text-apple-text-secondaryDark">
+                    핵심 지표 B (Throughput)
+                  </p>
+                  <p class="text-5xl font-bold font-mono tabular-nums text-apple-green dark:text-apple-green-dark mt-2">
+                    2.4×
+                  </p>
+                  <p class="supplement-note mt-2">대규모 환경 확장 시 처리량 향상</p>
+                </div>
+                <div class="supplement-panel">
+                  <p class="text-sm font-semibold text-apple-text-secondary dark:text-apple-text-secondaryDark">
+                    핵심 지표 C (Safety)
+                  </p>
+                  <p class="text-5xl font-bold font-mono tabular-nums text-apple-text-primary dark:text-apple-text-primaryDark mt-2">
+                    99.9%
+                  </p>
+                  <p class="supplement-note mt-2">제약 조건 만족률 및 안정성 기준</p>
+                </div>
+              </div>
+
+              <div class="supplement-grid">
+                <div class="supplement-panel">
+                  <h3>기존 접근법 (Baseline)</h3>
+                  <dl class="supplement-rows">
+                    <div>
+                      <dt>확장성 한계</dt>
+                      <dd class="text-base text-apple-text-secondary dark:text-apple-text-secondaryDark">
+                        규모가 커질수록 연산 시간이 지수적으로 증가합니다.
+                      </dd>
+                    </div>
+                    <div>
+                      <dt>환경 변화 대응 부족</dt>
+                      <dd class="text-base text-apple-text-secondary dark:text-apple-text-secondaryDark">
+                        동적 이벤트 발생 시 재계획 비용이 과도합니다.
+                      </dd>
+                    </div>
+                  </dl>
+                </div>
+                <div class="supplement-panel">
+                  <h3>제안 접근법 (Ours)</h3>
+                  <dl class="supplement-rows">
+                    <div>
+                      <dt>모듈형 분산 구조</dt>
+                      <dd class="text-base text-apple-text-secondary dark:text-apple-text-secondaryDark">
+                        문제를 국소 단위로 분해해 실시간 응답을 보장합니다.
+                      </dd>
+                    </div>
+                    <div>
+                      <dt>검증 가능한 안전 경계</dt>
+                      <dd class="text-base text-apple-text-secondary dark:text-apple-text-secondaryDark">
+                        결정론적 제약 검증 레이어를 최종단에 결합합니다.
+                      </dd>
+                    </div>
+                  </dl>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between pt-1">
+                <p class="supplement-note">※ 슬라이드에는 핵심 수치만 두고, 배경 설명은 쇼케이스로 분리하세요.</p>
+                <a class="supplement-link" href="interactive-showcase.html?from=3#deep-dive">
+                  상세 배경 · FAQ 쇼케이스 보기 <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="slide-footer flex items-center justify-between text-base text-apple-text-tertiary">
+              <span>Your Seminar · Problem Statement</span>
+              <span class="slide-num font-mono tabular-nums">3 / 6</span>
+            </div>
+          </section>
+
+          <!-- ============================================================ -->
+          <!-- SLIDE 4: ARCHITECTURE & FORMULATION                           -->
+          <!-- ============================================================ -->
+          <section
+            class="slide-page supplemented accent-green absolute inset-0 p-14 flex flex-col justify-between opacity-0 pointer-events-none transition-opacity duration-300"
+            data-title-ko="핵심 방법론 & 수식"
+            data-showcase="architecture"
+            data-notes-ko="핵심 수식과 2단 구조 패널을 보여주는 레이아웃 예시입니다. 세부 변수 정의와 전체 다이어그램은 쇼케이스 #architecture로 이동해 설명할 수 있습니다."
+          >
+            <div>
+              <p class="text-sm font-bold uppercase tracking-wider text-apple-green dark:text-apple-green-dark mb-2">
+                03 · METHODOLOGY &amp; FORMULATION
+              </p>
+              <h2 class="text-4xl font-bold tracking-tight text-apple-text-primary dark:text-apple-text-primaryDark">
+                제안 알고리즘 구조와 목적 함수
+              </h2>
+            </div>
+
+            <div class="supplement-content">
+              <div class="supplement-panel">
+                <p class="text-sm font-semibold text-apple-green dark:text-apple-green-dark uppercase tracking-wider">
+                  Objective Formulation
+                </p>
+                <div class="supplement-equation math text-apple-text-primary dark:text-apple-text-primaryDark">
+                  min<sub>&pi; &isin; &Pi;</sub> &nbsp; E [ &Sigma;<sub>t=0</sub><sup>T</sup> &gamma;<sup>t</sup> c(s<sub>t</sub>, a<sub>t</sub>) ]
+                  &nbsp;&nbsp; s.t. &nbsp; g<sub>i</sub>(s<sub>t</sub>, a<sub>t</sub>) &le; 0, &nbsp; &forall; i, t
+                </div>
+                <p class="supplement-note">
+                  핵심 수식은 <code>.math</code> 클래스를 사용하면 숫자 1과 알파벳 I가 명확히 구분됩니다.
+                </p>
+              </div>
+
+              <div class="supplement-grid">
+                <div class="supplement-panel">
+                  <h3>Stage 1 · State Abstraction</h3>
+                  <p class="text-base text-apple-text-secondary dark:text-apple-text-secondaryDark">
+                    고차원 전역 상태를 핵심 특징량과 국소 관측 벡터로 압축하여 입력 차원을 일정하게 유지합니다.
+                  </p>
+                </div>
+                <div class="supplement-panel">
+                  <h3>Stage 2 · Policy &amp; Safety Gate</h3>
+                  <p class="text-base text-apple-text-secondary dark:text-apple-text-secondaryDark">
+                    경량 정책이 후보 행동을 산출하고, 결정론적 안전 검증 필터를 통과한 행동만 실행합니다.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between pt-1">
+                <p class="supplement-note">전체 기호 정의·증명·시스템 블록도는 쇼케이스에서 스크롤로 확인합니다.</p>
+                <a class="supplement-link" href="interactive-showcase.html?from=4#architecture">
+                  수식 유도 · 아키텍처 상세 보기 <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="slide-footer flex items-center justify-between text-base text-apple-text-tertiary">
+              <span>Your Seminar · Methodology</span>
+              <span class="slide-num font-mono tabular-nums">4 / 6</span>
+            </div>
+          </section>
+
+          <!-- ============================================================ -->
+          <!-- SLIDE 5: BENCHMARKS & RESULTS                                 -->
+          <!-- ============================================================ -->
+          <section
+            class="slide-page supplemented accent-orange absolute inset-0 p-14 flex flex-col justify-between opacity-0 pointer-events-none transition-opacity duration-300"
+            data-title-ko="실험 결과 & 비교 분석"
+            data-showcase="benchmarks"
+            data-notes-ko="실험 결과 요약 슬라이드입니다. 청중이 세부 하이퍼파라미터나 시나리오별 전체 수치를 물어보면 쇼케이스 #benchmarks 표를 바로 띄우세요."
+          >
+            <div>
+              <p class="text-sm font-bold uppercase tracking-wider text-apple-orange dark:text-apple-orange-dark mb-2">
+                04 · EXPERIMENTAL RESULTS
+              </p>
+              <h2 class="text-4xl font-bold tracking-tight text-apple-text-primary dark:text-apple-text-primaryDark">
+                벤치마크 요약 및 정량적 성과
+              </h2>
+            </div>
+
+            <div class="supplement-content">
+              <div class="supplement-grid">
+                <div class="supplement-panel space-y-4">
+                  <h3>시나리오별 성능 비교</h3>
+                  <div class="space-y-3">
+                    <div>
+                      <div class="flex justify-between text-base font-medium mb-1">
+                        <span>Baseline A (Heuristic)</span>
+                        <span class="font-mono tabular-nums">64.2</span>
+                      </div>
+                      <div class="h-3 rounded-full bg-black/10 dark:bg-white/10 overflow-hidden">
+                        <div class="h-full bg-apple-text-tertiary rounded-full" style="width: 64%"></div>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="flex justify-between text-base font-medium mb-1">
+                        <span>Baseline B (Centralized)</span>
+                        <span class="font-mono tabular-nums">78.5</span>
+                      </div>
+                      <div class="h-3 rounded-full bg-black/10 dark:bg-white/10 overflow-hidden">
+                        <div class="h-full bg-apple-orange rounded-full" style="width: 78.5%"></div>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="flex justify-between text-base font-bold text-apple-blue dark:text-apple-blue-dark mb-1">
+                        <span>Proposed Method (Ours)</span>
+                        <span class="font-mono tabular-nums">94.8</span>
+                      </div>
+                      <div class="h-3 rounded-full bg-black/10 dark:bg-white/10 overflow-hidden">
+                        <div class="h-full bg-apple-blue rounded-full" style="width: 94.8%"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="supplement-panel">
+                  <h3>핵심 인사이트 (Key Takeaways)</h3>
+                  <dl class="supplement-rows">
+                    <div>
+                      <dt>일관된 우위</dt>
+                      <dd class="text-base text-apple-text-secondary dark:text-apple-text-secondaryDark">
+                        소규모부터 대규모 인스턴스까지 모든 구간에서 최상위 성능을 기록했습니다.
+                      </dd>
+                    </div>
+                    <div>
+                      <dt>낮은 분산</dt>
+                      <dd class="text-base text-apple-text-secondary dark:text-apple-text-secondaryDark">
+                        랜덤 시드 10회 반복 실험에서 최악 케이스 성능 저하를 크게 줄였습니다.
+                      </dd>
+                    </div>
+                  </dl>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between pt-1">
+                <p class="supplement-note">전체 시나리오별 수치 테이블과 어블레이션 결과는 쇼케이스에 정리되어 있습니다.</p>
+                <a class="supplement-link" href="interactive-showcase.html?from=5#benchmarks">
+                  전체 벤치마크 테이블 보기 <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="slide-footer flex items-center justify-between text-base text-apple-text-tertiary">
+              <span>Your Seminar · Results</span>
+              <span class="slide-num font-mono tabular-nums">5 / 6</span>
+            </div>
+          </section>
+
+          <!-- ============================================================ -->
+          <!-- SLIDE 6: CLOSING & Q&A                                        -->
+          <!-- ============================================================ -->
+          <section
+            class="slide-page closing-section supplemented accent-purple absolute inset-0 p-14 flex flex-col justify-between opacity-0 pointer-events-none transition-opacity duration-300"
+            data-title-ko="마무리 & Q&A"
+            data-showcase="references"
+            data-notes-ko="발표를 마무리하고 질의응답을 받습니다. 참고 문헌과 원본 링크 목록은 쇼케이스 #references에서 바로 열 수 있습니다."
+          >
+            <div>
+              <p class="text-sm font-bold uppercase tracking-wider text-apple-purple dark:text-apple-purple-dark mb-2">
+                05 · CONCLUSION &amp; Q&amp;A
+              </p>
+              <h2 class="text-5xl font-bold tracking-tight text-apple-text-primary dark:text-apple-text-primaryDark">
+                감사합니다 · Thank You
+              </h2>
+            </div>
+
+            <div class="supplement-content">
+              <div class="supplement-grid">
+                <div class="supplement-panel">
+                  <h3>3줄 요약</h3>
+                  <ul class="space-y-2 text-base text-apple-text-secondary dark:text-apple-text-secondaryDark list-disc pl-5">
+                    <li>핵심 기여 1: 문제 구조화 및 정량적 병목 해소</li>
+                    <li>핵심 기여 2: 확장 가능한 방법론과 안전성 검증</li>
+                    <li>핵심 기여 3: 실증 벤치마크를 통한 일관된 성능 입증</li>
+                  </ul>
+                </div>
+
+                <div class="supplement-panel">
+                  <h3>연락처 &amp; 자료</h3>
+                  <dl class="supplement-rows">
+                    <div>
+                      <dt>Speaker</dt>
+                      <dd class="text-base text-apple-text-secondary dark:text-apple-text-secondaryDark">
+                        홍길동 (Your Name) · email@example.com
+                      </dd>
+                    </div>
+                    <div>
+                      <dt>Links</dt>
+                      <dd class="text-base text-apple-text-secondary dark:text-apple-text-secondaryDark">
+                        github.com/your-handle · your-site.github.io
+                      </dd>
+                    </div>
+                  </dl>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between pt-1">
+                <p class="supplement-note">Q&amp;A 중 참고 문헌이나 추가 자료가 필요하면 우측 링크로 이동하세요.</p>
+                <a class="supplement-link" href="interactive-showcase.html?from=6#references">
+                  참고 문헌 · 원본 자료 목록 보기 <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="slide-footer flex items-center justify-between text-base text-apple-text-tertiary">
+              <span>Dual-Mode Presentation Template · Designed by Jaehyun Park</span>
+              <span class="slide-num font-mono tabular-nums">6 / 6</span>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Dot Indicators -->
+    <footer class="no-print h-10 flex items-center justify-center gap-2 shrink-0 select-none">
+      <div id="dotIndicators" class="flex items-center gap-2"></div>
+    </footer>
+
+    <!-- Overview Grid Modal (O) -->
+    <div
+      id="overviewModal"
+      class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-md flex items-center justify-center p-6 no-print"
+      onclick="if (event.target === this) closeOverview();"
+    >
+      <div
+        class="w-full max-w-5xl max-h-[85vh] overflow-y-auto rounded-3xl bg-white dark:bg-apple-surfaceDark border border-apple-border dark:border-apple-borderDark p-6 shadow-apple-modal"
+      >
+        <div class="flex items-center justify-between mb-5">
+          <h3 class="text-lg font-bold text-apple-text-primary dark:text-apple-text-primaryDark">
+            슬라이드 전체보기 (Overview)
+          </h3>
+          <button
+            onclick="closeOverview()"
+            class="px-3 py-1.5 rounded-lg bg-apple-subtle dark:bg-apple-subtleDark text-xs font-semibold"
+          >
+            닫기 (ESC)
+          </button>
+        </div>
+        <div id="overviewGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-4"></div>
+      </div>
+    </div>
+
+    <!-- In-Page Notes Drawer (Shift+P) -->
+    <div
+      id="notesDrawer"
+      class="hidden fixed bottom-12 left-1/2 -translate-x-1/2 z-50 w-[min(760px,calc(100%-2rem))] rounded-2xl apple-glass border border-apple-border dark:border-apple-borderDark shadow-apple-modal p-5 no-print"
+    >
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-apple-blue dark:text-apple-blue-dark">
+          Presenter Notes · Slide <span id="notesSlideNum">1</span>
+        </span>
+        <button onclick="toggleNotes()" class="text-xs text-apple-text-secondary hover:text-apple-text-primary">
+          닫기
+        </button>
+      </div>
+      <p id="notesContent" class="text-sm leading-relaxed text-apple-text-primary dark:text-apple-text-primaryDark"></p>
+    </div>
+
+    <!-- Keyboard Shortcuts Help Modal (?) -->
+    <div
+      id="helpModal"
+      class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-md flex items-center justify-center p-6 no-print"
+      onclick="if (event.target === this) toggleHelp();"
+    >
+      <div
+        class="w-full max-w-md rounded-3xl bg-white dark:bg-apple-surfaceDark border border-apple-border dark:border-apple-borderDark p-6 shadow-apple-modal space-y-4"
+      >
+        <div class="flex items-center justify-between">
+          <h3 class="text-base font-bold text-apple-text-primary dark:text-apple-text-primaryDark">키보드 단축키</h3>
+          <button onclick="toggleHelp()" class="text-xs text-apple-text-secondary">닫기 (ESC)</button>
+        </div>
+        <div class="space-y-2 text-sm">
+          <div class="flex justify-between">
+            <span class="text-apple-text-secondary">다음 / 이전 슬라이드</span>
+            <kbd class="font-mono text-xs px-2 py-0.5 rounded bg-apple-subtle dark:bg-apple-subtleDark">← → / Space</kbd>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-apple-text-secondary">첫 / 마지막 슬라이드</span>
+            <kbd class="font-mono text-xs px-2 py-0.5 rounded bg-apple-subtle dark:bg-apple-subtleDark">Home / End</kbd>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-apple-text-secondary">전체화면 발표 모드</span>
+            <kbd class="font-mono text-xs px-2 py-0.5 rounded bg-apple-subtle dark:bg-apple-subtleDark">F</kbd>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-apple-text-secondary">슬라이드 전체보기</span>
+            <kbd class="font-mono text-xs px-2 py-0.5 rounded bg-apple-subtle dark:bg-apple-subtleDark">O</kbd>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-apple-text-secondary">발표자 노트 별도 창 / 하단 패널</span>
+            <kbd class="font-mono text-xs px-2 py-0.5 rounded bg-apple-subtle dark:bg-apple-subtleDark">P / Shift+P</kbd>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-apple-text-secondary">도움말</span>
+            <kbd class="font-mono text-xs px-2 py-0.5 rounded bg-apple-subtle dark:bg-apple-subtleDark">?</kbd>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let slides = [];
+      let currentSlide = 1;
+      let presenterWin = null;
+
+      function refreshSlides() {
+        slides = Array.from(document.querySelectorAll("#deckContainer > .slide-page"));
+      }
+
+      function getTotalSlides() {
+        refreshSlides();
+        return slides.length;
+      }
+
+      function getSlideTitle(index) {
+        refreshSlides();
+        const slide = slides[index];
+        if (!slide) return `Slide ${index + 1}`;
+        return slide.getAttribute("data-title-ko") || `Slide ${index + 1}`;
+      }
+
+      function getSlideNotes(index) {
+        refreshSlides();
+        const slide = slides[index];
+        if (!slide) return "작성된 발표자 노트가 없습니다.";
+        return slide.getAttribute("data-notes-ko") || slide.getAttribute("data-notes") || "작성된 발표자 노트가 없습니다.";
+      }
+
+      function parseInitialSlide() {
+        const total = getTotalSlides();
+        const hash = window.location.hash;
+        if (hash && hash.startsWith("#slide-")) {
+          const num = parseInt(hash.replace("#slide-", ""), 10);
+          if (num >= 1 && num <= total) return num;
+        }
+        const slideParam = new URLSearchParams(window.location.search).get("slide");
+        if (slideParam) {
+          const num = parseInt(slideParam, 10);
+          if (num >= 1 && num <= total) return num;
+        }
+        return 1;
+      }
+
+      function updateSlide() {
+        refreshSlides();
+        const total = slides.length;
+        slides.forEach((slide, index) => {
+          const slideNum = index + 1;
+          slide.inert = slideNum !== currentSlide;
+          slide.setAttribute("aria-hidden", String(slideNum !== currentSlide));
+          if (slideNum === currentSlide) {
+            slide.classList.remove("opacity-0", "pointer-events-none");
+            slide.classList.add("opacity-100", "z-10");
+          } else {
+            slide.classList.add("opacity-0", "pointer-events-none");
+            slide.classList.remove("opacity-100", "z-10");
+          }
+          slide.querySelectorAll(".slide-num").forEach((el) => {
+            el.textContent = `${slideNum} / ${total}`;
+          });
+        });
+
+        const notesEl = document.getElementById("notesContent");
+        if (notesEl) notesEl.innerText = getSlideNotes(currentSlide - 1);
+        const notesSlideNumEl = document.getElementById("notesSlideNum");
+        if (notesSlideNumEl) notesSlideNumEl.innerText = currentSlide;
+
+        const curEl = document.getElementById("currentSlideNum");
+        if (curEl) curEl.innerText = currentSlide;
+        const totEl = document.getElementById("totalSlideNum");
+        if (totEl) totEl.innerText = total;
+
+        const prevBtn = document.getElementById("prevBtn");
+        if (prevBtn) prevBtn.disabled = currentSlide === 1;
+        const nextBtn = document.getElementById("nextBtn");
+        if (nextBtn) nextBtn.disabled = currentSlide === total;
+
+        try {
+          history.replaceState(null, null, `#slide-${currentSlide}`);
+        } catch (_) {}
+
+        const pBar = document.getElementById("progressBar");
+        if (pBar) pBar.style.width = `${(currentSlide / total) * 100}%`;
+
+        const showcaseBtn = document.getElementById("interactiveLinkBtn");
+        if (showcaseBtn) {
+          const section = slides[currentSlide - 1]?.dataset.showcase;
+          showcaseBtn.href = `interactive-showcase.html?from=${currentSlide}${section ? "#" + section : ""}`;
+        }
+
+        renderDots();
+        updatePresenterView();
+      }
+
+      function nextSlide() {
+        if (currentSlide < getTotalSlides()) {
+          currentSlide++;
+          updateSlide();
+        }
+      }
+
+      function prevSlide() {
+        if (currentSlide > 1) {
+          currentSlide--;
+          updateSlide();
+        }
+      }
+
+      function goToSlide(num) {
+        if (num >= 1 && num <= getTotalSlides()) {
+          currentSlide = num;
+          updateSlide();
+          closeOverview();
+        }
+      }
+
+      function renderDots() {
+        refreshSlides();
+        const container = document.getElementById("dotIndicators");
+        if (!container) return;
+        container.innerHTML = "";
+        for (let i = 1; i <= slides.length; i++) {
+          const dot = document.createElement("button");
+          dot.title = `Slide ${i}: ${getSlideTitle(i - 1)}`;
+          dot.className = `h-2 rounded-full transition-all duration-300 ${
+            i === currentSlide
+              ? "w-6 bg-apple-blue"
+              : "w-2 bg-apple-text-tertiary hover:bg-apple-text-secondary opacity-50 hover:opacity-100"
+          }`;
+          dot.onclick = () => goToSlide(i);
+          container.appendChild(dot);
+        }
+      }
+
+      function renderSlideMenu() {
+        const menu = document.getElementById("slideMenu");
+        if (!menu) return;
+        menu.innerHTML = "";
+        const total = getTotalSlides();
+        for (let i = 1; i <= total; i++) {
+          const item = document.createElement("button");
+          item.textContent = `${i}. ${getSlideTitle(i - 1)}`;
+          item.className = `w-full text-left px-3 py-2 rounded-xl text-sm transition-colors truncate ${
+            i === currentSlide
+              ? "bg-apple-subtle dark:bg-apple-subtleDark text-apple-blue font-semibold"
+              : "text-apple-text-primary dark:text-apple-text-primaryDark hover:bg-apple-subtle dark:hover:bg-apple-subtleDark"
+          }`;
+          item.onclick = () => {
+            closeSlideMenu();
+            goToSlide(i);
+          };
+          menu.appendChild(item);
+        }
+      }
+
+      function toggleSlideMenu(e) {
+        if (e) e.stopPropagation();
+        const menu = document.getElementById("slideMenu");
+        if (!menu) return;
+        if (menu.classList.contains("hidden")) {
+          renderSlideMenu();
+          menu.classList.remove("hidden");
+        } else {
+          closeSlideMenu();
+        }
+      }
+
+      function closeSlideMenu() {
+        const menu = document.getElementById("slideMenu");
+        if (menu) menu.classList.add("hidden");
+      }
+
+      document.addEventListener("click", (e) => {
+        const wrap = document.getElementById("slideMenuWrap");
+        if (wrap && !wrap.contains(e.target)) closeSlideMenu();
+      });
+
+      function renderOverviewGrid() {
+        const grid = document.getElementById("overviewGrid");
+        if (!grid) return;
+        grid.innerHTML = "";
+        const total = getTotalSlides();
+        for (let i = 1; i <= total; i++) {
+          const card = document.createElement("button");
+          card.className = `p-4 rounded-2xl text-left border transition-all ${
+            i === currentSlide
+              ? "border-apple-blue bg-apple-blue-light/50 dark:bg-apple-blue/15"
+              : "border-apple-border dark:border-apple-borderDark hover:border-apple-blue/50"
+          }`;
+          card.innerHTML = `
+            <div class="text-xs font-mono font-bold text-apple-blue mb-1">SLIDE ${i}</div>
+            <div class="text-sm font-semibold text-apple-text-primary dark:text-apple-text-primaryDark">${getSlideTitle(i - 1)}</div>
+          `;
+          card.onclick = () => goToSlide(i);
+          grid.appendChild(card);
+        }
+      }
+
+      function toggleOverview() {
+        const modal = document.getElementById("overviewModal");
+        if (!modal) return;
+        if (modal.classList.contains("hidden")) {
+          renderOverviewGrid();
+          modal.classList.remove("hidden");
+        } else {
+          modal.classList.add("hidden");
+        }
+      }
+
+      function closeOverview() {
+        const modal = document.getElementById("overviewModal");
+        if (modal) modal.classList.add("hidden");
+      }
+
+      function toggleNotes() {
+        const drawer = document.getElementById("notesDrawer");
+        if (drawer) drawer.classList.toggle("hidden");
+      }
+
+      function openPresenterView() {
+        if (presenterWin && !presenterWin.closed) {
+          presenterWin.focus();
+          updatePresenterView();
+          return;
+        }
+        presenterWin = window.open("", "dualDeckPresenter", "width=720,height=480");
+        if (!presenterWin) {
+          toggleNotes();
+          return;
+        }
+        presenterWin.document.write(`
+          <!doctype html>
+          <html lang="ko"><head><meta charset="UTF-8"><title>Presenter Notes</title>
+          <style>
+            body { margin:0; padding:28px; font-family:-apple-system,BlinkMacSystemFont,sans-serif; background:#161618; color:#f5f5f7; line-height:1.7; }
+            .meta { font-size:13px; color:#64aaff; font-weight:700; margin-bottom:10px; }
+            .title { font-size:22px; font-weight:700; margin-bottom:16px; }
+            .notes { font-size:18px; color:#e5e5ea; white-space:pre-wrap; }
+            .controls { margin-top:24px; display:flex; gap:10px; }
+            button { padding:8px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.15); background:#242426; color:#fff; cursor:pointer; font-size:13px; }
+          </style></head>
+          <body>
+            <div class="meta" id="pMeta"></div>
+            <div class="title" id="pTitle"></div>
+            <div class="notes" id="pNotes"></div>
+            <div class="controls">
+              <button onclick="window.opener && window.opener.prevSlide()">← 이전</button>
+              <button onclick="window.opener && window.opener.nextSlide()">다음 →</button>
+            </div>
+          </body></html>
+        `);
+        presenterWin.document.close();
+        updatePresenterView();
+      }
+
+      function updatePresenterView() {
+        if (!presenterWin || presenterWin.closed) return;
+        const meta = presenterWin.document.getElementById("pMeta");
+        const title = presenterWin.document.getElementById("pTitle");
+        const notes = presenterWin.document.getElementById("pNotes");
+        if (meta) meta.textContent = `SLIDE ${currentSlide} / ${getTotalSlides()}`;
+        if (title) title.textContent = getSlideTitle(currentSlide - 1);
+        if (notes) notes.textContent = getSlideNotes(currentSlide - 1);
+      }
+
+      function toggleHelp() {
+        const modal = document.getElementById("helpModal");
+        if (modal) modal.classList.toggle("hidden");
+      }
+
+      function toggleTheme() {
+        document.documentElement.classList.toggle("dark");
+        try {
+          localStorage.setItem("dual-deck-theme", document.documentElement.classList.contains("dark") ? "dark" : "light");
+        } catch (_) {}
+      }
+
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(() => {});
+        } else if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+
+      document.addEventListener("fullscreenchange", () => {
+        document.body.classList.toggle("presenting", !!document.fullscreenElement);
+        fitDeck();
+      });
+
+      const DECK_WIDTH = 1920;
+      const DECK_HEIGHT = 1080;
+
+      function fitDeck() {
+        const stage = document.getElementById("deckStage");
+        const deck = document.getElementById("deckContainer");
+        if (!stage || !deck) return;
+        const scale = Math.min(stage.clientWidth / DECK_WIDTH, stage.clientHeight / DECK_HEIGHT);
+        deck.style.setProperty("--deck-scale", scale);
+      }
+
+      window.addEventListener("keydown", (e) => {
+        if (e.metaKey || e.ctrlKey || e.altKey) return;
+        if (e.target.isContentEditable || e.target.closest("a, button, input, textarea, select")) return;
+
+        switch (e.key) {
+          case "ArrowRight":
+          case "PageDown":
+          case " ":
+          case "Enter":
+            e.preventDefault();
+            nextSlide();
+            break;
+          case "ArrowLeft":
+          case "PageUp":
+            e.preventDefault();
+            prevSlide();
+            break;
+          case "Home":
+            e.preventDefault();
+            goToSlide(1);
+            break;
+          case "End":
+            e.preventDefault();
+            goToSlide(getTotalSlides());
+            break;
+          case "f":
+          case "F":
+            e.preventDefault();
+            toggleFullscreen();
+            break;
+          case "o":
+          case "O":
+            e.preventDefault();
+            toggleOverview();
+            break;
+          case "p":
+            e.preventDefault();
+            openPresenterView();
+            break;
+          case "P":
+            e.preventDefault();
+            toggleNotes();
+            break;
+          case "?":
+            e.preventDefault();
+            toggleHelp();
+            break;
+          case "Escape":
+            closeSlideMenu();
+            closeOverview();
+            const helpModal = document.getElementById("helpModal");
+            if (helpModal && !helpModal.classList.contains("hidden")) toggleHelp();
+            break;
+        }
+      });
+
+      let touchStartX = 0;
+      window.addEventListener("touchstart", (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      });
+      window.addEventListener("touchend", (e) => {
+        const touchEndX = e.changedTouches[0].screenX;
+        if (touchEndX < touchStartX - 50) nextSlide();
+        if (touchEndX > touchStartX + 50) prevSlide();
+      });
+
+      window.addEventListener("beforeunload", () => {
+        if (presenterWin && !presenterWin.closed) presenterWin.close();
+      });
+
+      window.addEventListener("DOMContentLoaded", () => {
+        if (window.lucide) lucide.createIcons();
+        refreshSlides();
+        currentSlide = parseInitialSlide();
+        document.body.classList.add("no-anim");
+        updateSlide();
+        requestAnimationFrame(() => requestAnimationFrame(() => document.body.classList.remove("no-anim")));
+        fitDeck();
+        new ResizeObserver(fitDeck).observe(document.getElementById("deckStage"));
+      });
+    </script>
+  </body>
+</html>

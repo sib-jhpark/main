@@ -10,6 +10,7 @@ import { ContactSection } from './components/ContactSection';
 import { TwoStateMbrlPage } from './components/TwoStateMbrlPage';
 import { SogsPage } from './components/SogsPage';
 import { MapfPage } from './components/MapfPage';
+import { DeckTemplatePage } from './components/DeckTemplatePage';
 import { Footer } from './components/Footer';
 
 function getTabFromHash(): TopTabId {
@@ -17,6 +18,7 @@ function getTabFromHash(): TopTabId {
   if (window.location.hash === '#two-state-mbrl') return 'two-state-mbrl';
   if (window.location.hash === '#sogs') return 'sogs';
   if (window.location.hash === '#mapf-rl') return 'mapf-rl';
+  if (window.location.hash === '#deck-template') return 'deck-template';
   return 'home';
 }
 
@@ -31,6 +33,8 @@ function ProfileLayout() {
         setActiveTab('sogs');
       } else if (window.location.hash === '#mapf-rl') {
         setActiveTab('mapf-rl');
+      } else if (window.location.hash === '#deck-template') {
+        setActiveTab('deck-template');
       } else if (window.location.hash === '#home' || window.location.hash === '') {
         setActiveTab('home');
       }
@@ -74,6 +78,8 @@ function ProfileLayout() {
           <SogsPage />
         ) : activeTab === 'mapf-rl' ? (
           <MapfPage />
+        ) : activeTab === 'deck-template' ? (
+          <DeckTemplatePage />
         ) : (
           <div className="space-y-16 sm:space-y-20">
             <HeroBento />

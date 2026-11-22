@@ -2,7 +2,7 @@ import { Globe, Moon, Sun } from 'lucide-react';
 import { useThemeLanguage } from '../context/ThemeLanguageContext';
 import { profileData } from '../data/profile';
 
-export type TopTabId = 'home' | 'two-state-mbrl' | 'sogs' | 'mapf-rl';
+export type TopTabId = 'home' | 'two-state-mbrl' | 'sogs' | 'mapf-rl' | 'deck-template';
 
 export interface NavItem {
   id: TopTabId;
@@ -23,6 +23,7 @@ export const NAV_ITEMS: NavItem[] = [
   },
   { id: 'sogs', href: '#sogs', label: { ko: 'SOGS', en: 'SOGS' } },
   { id: 'mapf-rl', href: '#mapf-rl', label: { ko: 'MAPF-RL', en: 'MAPF-RL' } },
+  { id: 'deck-template', href: '#deck-template', label: { ko: '발표 템플릿', en: 'Slide Template' } },
 ];
 
 interface TopNavBarProps {
