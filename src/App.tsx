@@ -9,12 +9,14 @@ import { ProjectsSection } from './components/ProjectsSection';
 import { ContactSection } from './components/ContactSection';
 import { TwoStateMbrlPage } from './components/TwoStateMbrlPage';
 import { SogsPage } from './components/SogsPage';
+import { MapfPage } from './components/MapfPage';
 import { Footer } from './components/Footer';
 
 function getTabFromHash(): TopTabId {
   if (typeof window === 'undefined') return 'home';
   if (window.location.hash === '#two-state-mbrl') return 'two-state-mbrl';
   if (window.location.hash === '#sogs') return 'sogs';
+  if (window.location.hash === '#mapf-rl') return 'mapf-rl';
   return 'home';
 }
 
@@ -27,6 +29,8 @@ function ProfileLayout() {
         setActiveTab('two-state-mbrl');
       } else if (window.location.hash === '#sogs') {
         setActiveTab('sogs');
+      } else if (window.location.hash === '#mapf-rl') {
+        setActiveTab('mapf-rl');
       } else if (window.location.hash === '#home' || window.location.hash === '') {
         setActiveTab('home');
       }
@@ -53,6 +57,8 @@ function ProfileLayout() {
           <TwoStateMbrlPage />
         ) : activeTab === 'sogs' ? (
           <SogsPage />
+        ) : activeTab === 'mapf-rl' ? (
+          <MapfPage />
         ) : (
           <div className="space-y-16 sm:space-y-20">
             <HeroBento />
